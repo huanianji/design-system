@@ -1,0 +1,15 @@
+:where(.hj-input){font:inherit;line-height:1.5}
+.hj-input{box-sizing:border-box;border:1px solid var(--hj-control-line);border-radius:var(--hj-radius-small);background:var(--hj-soft);color:var(--hj-ink);padding:10px 12px;outline:none}
+.hj-input:hover:not(:disabled){border-color:var(--hj-control-line)}.hj-input:focus{border-color:var(--hj-accent);box-shadow:0 0 0 1px var(--hj-accent);outline:none}
+.hj-input:disabled{color:var(--hj-muted);cursor:not-allowed;opacity:.7}.hj-input[readonly]{color:var(--hj-muted)}.hj-input[data-input-status=error]{border-color:var(--hj-error)}.hj-input[data-input-status=error]:focus{box-shadow:0 0 0 1px var(--hj-error)}
+[data-status=error]{color:var(--hj-error)}[data-status=success]{color:var(--hj-success)}
+.hj-otp{display:grid;grid-template-columns:repeat(var(--otp-length),minmax(0,1fr));gap:var(--hj-space-code-gap);position:relative;isolation:isolate;width:min(100%,430px)}
+.hj-otp-slot{position:relative;border:1px solid var(--hj-line);border-radius:var(--hj-radius-small);background:var(--hj-soft);min-width:0;overflow:hidden}
+.hj-otp-slot input{box-sizing:border-box;width:100%;min-width:0;height:var(--hj-space-code-cell);border:0;padding:0;background:transparent;color:transparent;caret-color:transparent;border-radius:inherit;text-align:center;font:inherit;font-size:calc(var(--hj-font-section)*var(--text-scale,1));outline:none!important}
+.hj-otp-slot input::selection{background:var(--hj-wash);color:transparent}.hj-otp-slot:has(input:disabled){opacity:.65}
+.hj-otp-digit{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;font-size:calc(var(--hj-font-section)*var(--text-scale,1));font-variant-numeric:tabular-nums;transform-origin:center}
+.hj-otp-slot:has(input:focus) .hj-otp-digit:empty:after{content:'';height:22px;width:2px;background:var(--hj-accent)}
+.hj-otp-slot.composing input{color:var(--hj-ink);caret-color:var(--hj-accent)}.hj-otp-slot.composing .hj-otp-digit{visibility:hidden}
+.hj-otp-focus{position:absolute;left:0;top:0;box-sizing:border-box;border:2px solid var(--hj-accent);border-radius:var(--hj-radius-small);z-index:2;pointer-events:none}
+.hj-otp[data-input-status=error] .hj-otp-slot,.hj-otp[data-input-status=error] .hj-otp-focus{border-color:var(--hj-error)}.hj-otp[data-input-status=success] .hj-otp-slot,.hj-otp[data-input-status=success] .hj-otp-focus{border-color:var(--hj-success)}
+@media(prefers-reduced-motion:reduce){.hj-input{transition:none}}

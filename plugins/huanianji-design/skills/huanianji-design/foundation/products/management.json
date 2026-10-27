@@ -1,0 +1,10 @@
+{
+  "id": "management",
+  "label": "开播管理",
+  "accent": "indigo",
+  "overrides": {
+    "space": {
+      "group": 14
+    }
+  }
+}

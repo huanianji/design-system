@@ -1,0 +1,53 @@
+{
+  "format_version": 1,
+  "build_id": "003f9fed42f5d56d0c80",
+  "bundle": "generated/builds/003f9fed42f5d56d0c80",
+  "profiles": [
+    "baseline",
+    "creative",
+    "jade-demo",
+    "management"
+  ],
+  "inputs": {
+    "tokens/base.json": "c270283aeb3eaead57f8d462c72176f26a804357bb2f756fac70d2d64e755c80",
+    "sample/content.json": "330c72231964b6b4ae4a9d1820de75e1d0a92e84c5d52e936049cb5ddd6d0c39",
+    "sample/fragments.json": "66216faeec0dfda258580efdd1df8ae2b238335387109c58f944e00ee6bf1488",
+    "build.py": "09856f3d04b1cbbf4e73edfb63c1a3d7271002b6b0e5220447bef23c9658edf4",
+    "adapters/godot/generate.gd": "c086f7d1171ef2d21d5f62eaafcc8042db287df1d9dbdff1dc4f478d1d6f5e9f",
+    "adapters/godot/style_contract.gd": "26ca10e578a06648aa44c1e9d02fadcdfad3ce652d35b6cb786ae6ef3638fbac",
+    "adapters/godot/create_scene.py": "3166038232525c7c3b610947954444aab57adc679a7a69398e57e120e7ce6833",
+    "adapters/godot/create_fragments.py": "f50380e50655d602ce197dd63d9444051d52e7cf8c730fdf570731c6824526e4",
+    "products/baseline.json": "939495b45115747747346beb08a2f31a82a35148e1bf47e8ce0a21efafa66b1d",
+    "products/creative.json": "a9768862459c205ad6bba96a0f08edd3fe0d47dcb923defac3188941ac09413f",
+    "products/jade-demo.json": "c47a331c6a68edf5f3095177dc98cbcadd23da72d7c543ea7b976213b4e2f2ac",
+    "products/management.json": "8bd7596e4160a177db10b9837c0df3badaddb050ed38af547b575cd4f4e4ea15"
+  },
+  "assets": {
+    "assets/demo/warmframe.svg": "0dba8cc1a111af5f6a21dc993805d6202595f668d8084ad8fb5473c0bbd74f72",
+    "assets/demo/starlight.svg": "a2d18edd9ceea4ce2eff37703c6b7c539e3c34e85c308fdd0c99595986df46de",
+    "assets/demo/window.svg": "a91c723726669c3e4eef058f0dd86dc913ac0d8bf6ab2e05ff7e9a5542a3ab24",
+    "assets/icons/chevron.svg": "d49da25e0db12e96012018453d7d1e99342b8b5ce53b7f5804a2accc9ce34675",
+    "assets/icons/blank.svg": "0bb7d588dc1a5eb6d71eb1268cedff9f525afcda3cac42b3ecf27170d837ad11",
+    "assets/icons/slash.svg": "279cf901a4778ab1989fb3469db5a23ef53fb3ed7db2b35ab247947f8837bdb4",
+    "assets/icons/bell.svg": "bfad60cfae6ea9bb8bed04b4c45936e14d7f26132b8cb46573024321840522b2",
+    "assets/icons/mic.svg": "bc0a1b582c7bdf7ac1ec04caf4b661fffc080fc604a09feb10467588fa765de4",
+    "assets/icons/grabber.svg": "5e706f4020279c723a33b1c67ed1e510bf98f9c4417efa52962c4d0eabdb167d",
+    "assets/fonts/SOURCE.json": "c0ead9f30bc38cf6785d8cc740f12628d2e1c0ef5cdd783398862df58df365f6",
+    "assets/fonts/OFL.txt": "586a072c53a12f6e4389f0eb6034f9780afcb9f0a49558e9ed299664ab1107d8",
+    "assets/fonts/ResourceHanRoundedCN-VF.otf": "ee3f276c9f9ee77c726d4e9c88350a3de73fb297633c54d510971ee636dceb1e"
+  },
+  "outputs": {
+    "generated/builds/003f9fed42f5d56d0c80/tokens.css": "cbb75bb26ff3214d1ca55d0a453d981d158c0bc2b1bb80e1a52952237a14213d",
+    "generated/builds/003f9fed42f5d56d0c80/profiles.json": "eaea81fb053e752beec0d0722c79e21cb1e6037a06175b61fba420e82095b3a7",
+    "generated/builds/003f9fed42f5d56d0c80/themes/baseline_light.tres": "464fce11cdb423428dbd90757e4b29391fadffe19382be2f26e761d748594473",
+    "generated/builds/003f9fed42f5d56d0c80/themes/jade-demo_light.tres": "fa64414b3f5bc5724adf5e7d4f1636de810af0684f31a95cf421583ad6544a87",
+    "generated/builds/003f9fed42f5d56d0c80/themes/management_dark.tres": "996544f41fa277c1805b6f588a6df938afc706bc03cee29570fb6b28fe5ab3f2",
+    "generated/builds/003f9fed42f5d56d0c80/themes/management_light.tres": "3057fcc76a05dba5114cb62f28c01d96ac45d396ab76ae6b1913b4892da8f1f2",
+    "generated/builds/003f9fed42f5d56d0c80/themes/jade-demo_dark.tres": "b6dba279b9d21f0bacfe12b8ef1d3207d1859b0c9bdb6b159b4148fe37e7c8ca",
+    "generated/builds/003f9fed42f5d56d0c80/themes/creative_light.tres": "590133cbc8a6e601a8957baad82ef992f35ca11ee147aa81973a42c19691b35b",
+    "generated/builds/003f9fed42f5d56d0c80/themes/baseline_dark.tres": "8cf2281b67f893589686e422510d612453e334a2c4b53c5719d70ab260d2694e",
+    "generated/builds/003f9fed42f5d56d0c80/themes/creative_dark.tres": "b377ad54808bd7a799572ee62a77bc1fefc47a6963b2bbcd1abd3bb49a640a45",
+    "generated/editor-theme.tres": "464fce11cdb423428dbd90757e4b29391fadffe19382be2f26e761d748594473"
+  },
+  "default_profile": "baseline"
+}

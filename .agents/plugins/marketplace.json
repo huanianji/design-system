@@ -1,0 +1,20 @@
+{
+  "name": "huanianji-design",
+  "interface": {
+    "displayName": "华年集设计系统"
+  },
+  "plugins": [
+    {
+      "name": "huanianji-design",
+      "source": {
+        "source": "local",
+        "path": "./plugins/huanianji-design"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

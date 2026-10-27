@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh-CN" data-profile="baseline" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>华年集 · 共同基础 / Web</title><link rel="icon" href="data:,"><link id="tokens" rel="stylesheet"><link rel="stylesheet" href="app.css"><script type="module" src="app.js"></script></head>
+<body>
+<div class="shell">
+  <nav class="toolbar" aria-label="样张设置"><span id="source-status" role="status">正在读取共同源…</span><button id="reload"><span class="surface">重新读取设计</span></button><button id="mode"><span class="surface">切换深色</span></button><button id="profile"><span class="surface">强调色：靛蓝</span></button><button id="text-scale"><span class="surface">字号 125%</span></button><button id="reduce" aria-pressed="false"><span class="surface">减少动态</span></button></nav>
+  <p id="design-error" role="alert" hidden></p>
+  <main class="card" id="sample" hidden>
+    <header><div><h1 data-copy="Title"></h1><p class="muted" data-copy="Subtitle"></p></div><button id="bell" aria-label="提醒设置（本地演示）"><span class="surface"><span class="optical"><svg viewBox="0 0 24 24"><path d="M5 17h14l-1.8-3.1V9a5.2 5.2 0 0 0-10.4 0v4.9L5 17Zm5 3h4M12 2v2"/></svg></span></span></button></header>
+    <div class="tabs"><div class="tab-row" role="tablist" aria-label="直播阶段"><div class="plate" aria-hidden="true"></div><button id="tab0" role="tab" aria-selected="true"><span class="surface" data-copy="Tab0"></span></button><button id="tab1" role="tab" aria-selected="false" tabindex="-1"><span class="surface" data-copy="Tab1"></span></button><button id="tab2" role="tab" aria-selected="false" tabindex="-1"><span class="surface" data-copy="Tab2"></span></button></div></div>
+    <label class="topic"><span data-copy="TopicLabel"></span><input id="topic" type="text" autocomplete="off" placeholder="输入今晚的话题"></label>
+    <label class="checkrow"><input id="check" type="checkbox" checked><span class="check-art" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M7 14 12 19 22 8" pathLength="1"/></svg></span><span data-copy="ReadyCheck"></span></label>
+    <section class="frame"><div class="frame-head"><span data-copy="FrameTitle"></span><button id="expand" aria-expanded="false" aria-controls="reveal"><span class="surface"><span class="caption">展开设置</span><svg class="chevron" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></span></button></div>
+      <div class="scene" aria-label="画面布局示意"><div class="preview" data-copy="SceneLabel"></div><div class="side" aria-hidden="true"><i></i><i></i><i></i></div></div>
+      <div id="reveal" inert><div class="settings"><label for="parameter" class="muted">参数调节 <output id="parameter-value">68%</output></label><input id="parameter" type="range" min="0" max="100" value="68" disabled></div></div>
+    </section>
+    <button id="action"><span class="surface" data-copy="Action"></span></button><p id="action-note" class="muted" data-copy="ActionNote"></p>
+    <div class="states"><span class="success" data-copy="SuccessState"></span><span class="warning" data-copy="WarningState"></span><span class="error" data-copy="ErrorState"></span><span class="numbers muted" data-copy="Numbers"></span></div>
+    <footer class="muted"><span data-copy="Signature"></span><span data-copy="FontSample"></span></footer>
+  </main>
+</div>
+</body></html>

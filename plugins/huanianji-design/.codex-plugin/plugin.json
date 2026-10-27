@@ -1,0 +1,39 @@
+{
+  "name": "huanianji-design",
+  "version": "0.1.0",
+  "description": "华年集跨产品设计系统：设计方向、Web 与 Godot 公共实现、项目档案和界面检查。",
+  "author": {
+    "name": "华年集"
+  },
+  "homepage": "https://github.com/huanianji/design-system",
+  "repository": "https://github.com/huanianji/design-system.git",
+  "license": "LicenseRef-Huanianji-Restricted",
+  "keywords": [
+    "design-system",
+    "web",
+    "godot",
+    "huanianji"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "华年集设计系统",
+    "shortDescription": "让 AI 按华年集规则设计、实现并接续 Web / Godot 界面",
+    "longDescription": "包含共同规则、可调整的产品方向、字体与运动资源、Web / Godot 公共交互、已认可案例及项目设计档案工具。离线资源自包含，运行条件按目标电脑检查。",
+    "developerName": "华年集",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "composerIcon": "./assets/icon.svg",
+    "defaultPrompt": [
+      "用华年集设计系统为这个项目确定合适的界面方向。",
+      "检查当前界面的留白、字体、状态和动效，并按项目档案继续修改。"
+    ]
+  },
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/huanianji-setup/SKILL.md"
+    }
+  }
+}

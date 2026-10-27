@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN" data-profile="management" data-theme="light">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light dark"><title>华年集 · 字体与阅读检查</title><link rel="icon" href="data:,"><link id="tokens" rel="stylesheet"><link rel="stylesheet" href="app.css"><link rel="stylesheet" href="typography.css"><script type="module" src="typography.js"></script></head>
+<body><div class="shell type-shell">
+  <nav class="toolbar" aria-label="字体检查设置"><span id="source-status" role="status">正在读取字库…</span><div id="groups" class="type-groups" role="group" aria-label="检查内容"></div><button id="mode"><span class="surface">切换深色</span></button><button id="scale"><span class="surface">字号 125%</span></button><button id="fallback" aria-pressed="false"><span class="surface">系统回退对照</span></button></nav>
+  <main class="type-workspace"><header><div><h1>字体与阅读检查</h1><p class="muted">同一组文字，比较阅读、换行、回退和放大后的表现。</p></div></header><p id="font-status" class="font-status" role="status">正在加载主字库。</p><p id="error" role="alert" hidden></p><div id="samples"></div>
+    <section class="data-sample" id="data-sample" hidden><h2>稳定对齐的数据</h2><div class="number-row"><span>开播时段</span><span>19:30—22:00</span></div><div class="number-row"><span>连续数字</span><span>0123456789</span></div><div class="number-row digit-row" aria-label="等宽数字检查"><span>单个数字</span><span id="digits"></span></div></section>
+    <section class="type-input"><label for="draft">试着输入或粘贴一段文字</label><textarea id="draft" rows="2"></textarea><p class="muted">切换内容、主题、字号和回退对照时，保留这里的文字。</p></section><footer class="muted">华年集出品 · 字体检查样本</footer>
+  </main>
+</div><script type="application/json" id="font-metrics">{}</script></body></html>

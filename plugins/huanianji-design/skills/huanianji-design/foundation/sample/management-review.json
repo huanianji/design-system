@@ -1,0 +1,1281 @@
+{
+  "scope": "管理片段完整操作链：内容、筛选、逐人状态、焦点与主题接续",
+  "context_keys": [
+    "build_id",
+    "fixture",
+    "viewport",
+    "text_scale",
+    "theme",
+    "reduced"
+  ],
+  "context": {
+    "viewport": [
+      1280,
+      960
+    ],
+    "text_scale": 1
+  },
+  "equal_fields": [
+    "rows",
+    "selected",
+    "result_count",
+    "detail_visible",
+    "empty_visible",
+    "detail",
+    "checks",
+    "note",
+    "note_open",
+    "note_focusable",
+    "detail_settled"
+  ],
+  "layers": {
+    "rows": "content/roster-rendering",
+    "detail": "content/detail-rendering",
+    "checks": "state/per-person",
+    "note": "state/per-person",
+    "note_focusable": "visibility/focus",
+    "detail_settled": "motion/interruption",
+    "focus_visible": "input-modality/native-focus-visibility"
+  },
+  "cases": [
+    {
+      "id": "default",
+      "actions": [],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "1 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "linxi",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "林汐",
+          "slot": "19:30—22:00",
+          "topic": "夜间电台 · 聊聊今天的小确幸",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "开场留十分钟听听大家今天发生的事。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "attention",
+      "actions": [
+        "pointer:filter:attention"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "1 / 3"
+          }
+        ],
+        "selected": "linxi",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "林汐",
+          "slot": "19:30—22:00",
+          "topic": "夜间电台 · 聊聊今天的小确幸",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "开场留十分钟听听大家今天发生的事。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "select",
+      "actions": [
+        "pointer:person:xiaocheng"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "1 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          false,
+          false
+        ],
+        "note": "画面切换和节目单还需要开播前确认。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "check",
+      "actions": [
+        "pointer:task:1"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "画面切换和节目单还需要开播前确认。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "open",
+      "actions": [
+        "pointer:note-toggle"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "画面切换和节目单还需要开播前确认。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "draft",
+      "actions": [
+        "text:note:测试备注：先确认画面，再开播。"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true,
+        "focus": "note"
+      }
+    },
+    {
+      "id": "away",
+      "actions": [
+        "pointer:person:linxi"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "linxi",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "林汐",
+          "slot": "19:30—22:00",
+          "topic": "夜间电台 · 聊聊今天的小确幸",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "开场留十分钟听听大家今天发生的事。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "return",
+      "actions": [
+        "pointer:person:xiaocheng"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "dark",
+      "actions": [
+        "pointer:mode"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "keyboard-collapse",
+      "actions": [
+        "pointer:note",
+        "key:ShiftTab",
+        "key:Enter"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 2 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true,
+        "focus": "note-toggle",
+        "focus_visible": true
+      }
+    },
+    {
+      "id": "empty",
+      "actions": [
+        "text:query:不存在"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [],
+        "selected": null,
+        "result_count": "显示 0 位",
+        "detail_visible": false,
+        "empty_visible": true,
+        "detail": null,
+        "checks": [],
+        "note": null,
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true,
+        "focus": "query"
+      }
+    },
+    {
+      "id": "topic-query",
+      "actions": [
+        "pointer:filter:all",
+        "text:query:绘画"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          }
+        ],
+        "selected": "yuehe",
+        "result_count": "显示 1 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "月禾",
+          "slot": "21:30—00:00",
+          "topic": "绘画 · 给新角色画一间小屋",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待开播"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "检查画布预览，隐藏不需要的工具面板。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true,
+        "focus": "query"
+      }
+    },
+    {
+      "id": "filter-return",
+      "actions": [
+        "text:query:",
+        "pointer:person:xiaocheng"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "pointer-uncheck",
+      "actions": [
+        "pointer:task:0"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "1 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          false,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true,
+        "focus": "task-0"
+      }
+    },
+    {
+      "id": "keyboard-check",
+      "actions": [
+        "key:Space"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true,
+        "focus": "task-0",
+        "focus_visible": true
+      }
+    },
+    {
+      "id": "reopen",
+      "actions": [
+        "pointer:note-toggle"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "reduced",
+      "actions": [
+        "pointer:reduce",
+        "pointer:person:linxi"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": true
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "linxi",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "林汐",
+          "slot": "19:30—22:00",
+          "topic": "夜间电台 · 聊聊今天的小确幸",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "开场留十分钟听听大家今天发生的事。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "reduced-collapse",
+      "actions": [
+        "pointer:note-toggle"
+      ],
+      "context": {
+        "theme": "dark",
+        "reduced": true
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "linxi",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "林汐",
+          "slot": "19:30—22:00",
+          "topic": "夜间电台 · 聊聊今天的小确幸",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "开场留十分钟听听大家今天发生的事。",
+        "note_open": false,
+        "note_focusable": false,
+        "detail_settled": true
+      }
+    },
+    {
+      "id": "finish",
+      "actions": [
+        "pointer:reduce",
+        "pointer:mode",
+        "pointer:person:xiaocheng",
+        "pointer:note-toggle"
+      ],
+      "context": {
+        "theme": "light",
+        "reduced": false
+      },
+      "expect": {
+        "rows": [
+          {
+            "id": "linxi",
+            "name": "林汐",
+            "topic": "夜间电台 · 聊聊今天的小确幸",
+            "slot": "19:30—22:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "tangli",
+            "name": "棠梨",
+            "topic": "翻唱 · 给秋天的一封信",
+            "slot": "20:00—23:00",
+            "status": "直播中",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "qianyu",
+            "name": "浅予",
+            "topic": "游戏 · 和观众一起解谜",
+            "slot": "20:30—23:30",
+            "status": "待开播",
+            "ready": "3 / 3"
+          },
+          {
+            "id": "xiaocheng",
+            "name": "小澄",
+            "topic": "杂谈 · 今晚想试试即兴故事",
+            "slot": "21:00—23:00",
+            "status": "待确认",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "yuehe",
+            "name": "月禾",
+            "topic": "绘画 · 给新角色画一间小屋",
+            "slot": "21:30—00:00",
+            "status": "待开播",
+            "ready": "2 / 3"
+          },
+          {
+            "id": "beiyu",
+            "name": "北屿",
+            "topic": "游戏 · 本周的小小收获",
+            "slot": "16:00—18:00",
+            "status": "已结束",
+            "ready": "3 / 3"
+          }
+        ],
+        "selected": "xiaocheng",
+        "result_count": "显示 6 位",
+        "detail_visible": true,
+        "empty_visible": false,
+        "detail": {
+          "name": "小澄",
+          "slot": "21:00—23:00",
+          "topic": "杂谈 · 今晚想试试即兴故事",
+          "labels": [
+            "时段",
+            "内容"
+          ],
+          "status": "待确认"
+        },
+        "checks": [
+          true,
+          true,
+          false
+        ],
+        "note": "测试备注：先确认画面，再开播。",
+        "note_open": true,
+        "note_focusable": true,
+        "detail_settled": true
+      }
+    }
+  ]
+}

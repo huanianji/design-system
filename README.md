@@ -1,0 +1,87 @@
+# 华年集设计系统
+
+面向 AI 编码助手的跨产品设计系统。它将设计规则、产品方向、Web / Godot 公共实现和项目档案组织为 Codex 插件，支持从需求讨论到界面实现、检查与跨会话接续的工作流。
+
+不同产品可以保留各自调性，通过字体角色、轮廓、留白与动效形成稳定的家族联系。主题、密度和布局按产品任务调整，案例中的具体数值不作为所有项目的固定模板。
+
+## 安装
+
+本项目采用[限制性使用许可](LICENSE)：允许安装和非商业自用；转售、再分发或商用需事先取得单独书面授权。请在安装前阅读许可全文。
+
+需要支持插件的 Codex。使用 Codex CLI 注册本仓库并安装插件：
+
+```sh
+codex plugin marketplace add https://github.com/huanianji/design-system.git --ref main
+codex plugin add huanianji-design@huanianji-design
+```
+
+安装后打开新会话，选择「华年集设计系统」；首次使用可运行准备 Skill 检查当前电脑的环境。桌面客户端也可从插件目录的对应来源安装并启用。
+
+### 交给其他 AI 安装
+
+将下面这段话交给具备终端和网络能力的 AI 助手：
+
+> 请读取 https://raw.githubusercontent.com/huanianji/design-system/main/INSTALL.md 及其引用的 LICENSE，说明使用限制，并按已授权的用途将华年集设计系统安装到 Codex，检查实际安装状态和运行条件，告诉我如何在新会话调用。此次只安装插件，不修改业务项目。
+
+[INSTALL.md](INSTALL.md) 提供可直接执行的安装命令、安装后验证、无 CLI 时的离线路径和失败处理。安装目标是 Codex；其他助手可以执行安装流程，其他宿主的插件兼容性需分别验证。
+
+## 包含什么
+
+| 内容 | 用途 |
+| --- | --- |
+| 共同设计规则 | 字体角色、形状、留白、视觉对齐、状态与动效判断 |
+| 产品方向与项目档案 | 记录已选方向、产品差异、实际采用的实现和未决事项 |
+| Web / Godot 公共实现 | 按钮、Tab、展开、普通输入、验证码与动态图标 |
+| 主题与资源 | 共同数值源、产品覆盖、浅深主题、字体与许可 |
+| 独立案例 | 管理／创作工作台，以及 Lumina 原生创作工作区示例 |
+| 工具脚本 | 资料定位、档案初始化、环境探测、主题生成和独立预览准备 |
+
+## 使用
+
+- **新项目**：“用华年集设计系统，先确定这个产品的视觉方向，再实现界面。”
+- **已有项目**：“先读取设计档案，延续已确认的风格，优化这个面板的排版和交互。”
+- **跨会话**：“读取项目设计档案，继续上次未完成的界面工作。”
+
+AI 应先了解目标项目、读取已有档案，再选择适合的规则和公共实现。设计系统负责规则与复用资源；产品决定、业务代码与验收记录保存在目标项目。安装插件不自动改造已有软件。
+
+## 环境与验证范围
+
+- 脚本工具：Python 3.9+，只使用标准库。
+- Web：浏览器与本机静态 HTTP 服务。
+- Godot：当前验证基线为 4.7.2；引擎通过 PATH 或显式参数定位，不包含在插件中。
+- 安装入口：macOS、Windows、Linux；当前已完成 macOS 隔离安装、Codex 宿主读取、跨目录运行与档案读回验证。Windows／Linux 原生运行、DPI、完整输入法与读屏仍需对应环境验证。
+
+Lumina 是独立界面案例，不连接正式产品控制器、直播输入、Spout 或工程文件格式。
+
+## 更新
+
+```sh
+codex plugin marketplace upgrade huanianji-design
+codex plugin add huanianji-design@huanianji-design
+```
+
+更新后打开新会话。项目自己的设计档案和业务代码不会随插件更新被替换。离线安装、版本保留和回退方式见[使用说明](使用说明.md)。
+
+## 目录
+
+```text
+.agents/plugins/marketplace.json   Codex 插件源
+plugins/huanianji-design/          自包含插件
+INSTALL.md                        AI 安装协议
+LICENSE                           限制性使用许可
+使用说明.md                       手动安装与运行说明
+install.py                        离线安装器
+```
+
+## 许可
+
+本项目源码公开，**不按开源许可分发**，许可标识为 `LicenseRef-Huanianji-Restricted`，以 [LICENSE](LICENSE) 全文为准。
+
+- 允许免费安装、学习、评估、非商业自用及相应用途的私下修改。
+- 转售、向第三方再分发或商用均需另行书面授权，包括用本系统开发商业产品或提供商业服务；由 AI 执行不改变这些限制。
+- 保留 GitHub 服务条款允许的查看、站内 Fork 等权利。合法权利人对自有材料的权利不受本许可限制。
+- 第三方资源维持各自许可。资源圆体保留 SIL Open Font License，详见插件内 [第三方许可说明](plugins/huanianji-design/THIRD_PARTY_NOTICES.md)。
+
+需要商业使用或再分发授权，请联系本仓库维护者。
+
+插件格式依据：[OpenAI 插件文档](https://developers.openai.com/plugins/build/plugins)。

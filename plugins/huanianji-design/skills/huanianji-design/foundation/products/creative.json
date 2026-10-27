@@ -1,0 +1,10 @@
+{
+  "id": "creative",
+  "label": "素材预览",
+  "accent": "jade",
+  "overrides": {
+    "space": {
+      "group": 20
+    }
+  }
+}

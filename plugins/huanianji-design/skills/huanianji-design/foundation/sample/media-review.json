@@ -1,0 +1,278 @@
+{
+  "scope": "素材选择卡片：整项操作与焦点边界",
+  "context_keys": [
+    "build_id",
+    "fixture",
+    "viewport",
+    "text_scale",
+    "theme",
+    "reduced"
+  ],
+  "expect": {
+    "inner_action_controls": 0,
+    "extra_inner_indicator": false
+  },
+  "equal_fields": [
+    "selected",
+    "visible_focus_item",
+    "visible_focus_region",
+    "focus_visible",
+    "inner_action_controls",
+    "extra_inner_indicator"
+  ],
+  "layers": {
+    "inner_action_controls": "composition",
+    "extra_inner_indicator": "composition/theme-inheritance",
+    "visible_focus_region": "interaction-boundary",
+    "focus_visible": "input-modality/theme-inheritance",
+    "selected": "state-transition"
+  },
+  "cases": [
+    {
+      "id": "light/default",
+      "actions": [],
+      "expect": {
+        "selected": "starlight",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "light/image-warm",
+      "actions": [
+        "pointer:warmframe:image"
+      ],
+      "expect": {
+        "selected": "warmframe",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "light/title-star",
+      "actions": [
+        "pointer:starlight:title"
+      ],
+      "expect": {
+        "selected": "starlight",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "light/title-window",
+      "actions": [
+        "pointer:window:title"
+      ],
+      "expect": {
+        "selected": "window",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "light/canvas",
+      "actions": [
+        "pointer:canvas"
+      ],
+      "expect": {
+        "selected": "window",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "light/tab-focus",
+      "actions": [
+        "pointer:starlight:title",
+        "key:Tab"
+      ],
+      "expect": {
+        "selected": "starlight",
+        "visible_focus_item": "warmframe",
+        "visible_focus_region": "whole_item",
+        "focus_visible": true
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "light/enter",
+      "actions": [
+        "key:Enter"
+      ],
+      "expect": {
+        "selected": "warmframe",
+        "visible_focus_item": "warmframe",
+        "visible_focus_region": "whole_item",
+        "focus_visible": true
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "light/space",
+      "actions": [
+        "key:Space"
+      ],
+      "expect": {
+        "selected": "warmframe",
+        "visible_focus_item": "warmframe",
+        "visible_focus_region": "whole_item",
+        "focus_visible": true
+      },
+      "context": {
+        "theme": "light"
+      }
+    },
+    {
+      "id": "dark/default",
+      "actions": [],
+      "expect": {
+        "selected": "starlight",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "dark/image-warm",
+      "actions": [
+        "pointer:warmframe:image"
+      ],
+      "expect": {
+        "selected": "warmframe",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "dark/title-star",
+      "actions": [
+        "pointer:starlight:title"
+      ],
+      "expect": {
+        "selected": "starlight",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "dark/title-window",
+      "actions": [
+        "pointer:window:title"
+      ],
+      "expect": {
+        "selected": "window",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "dark/canvas",
+      "actions": [
+        "pointer:canvas"
+      ],
+      "expect": {
+        "selected": "window",
+        "visible_focus_item": null,
+        "visible_focus_region": null,
+        "focus_visible": false
+      },
+      "context": {
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "dark/tab-focus",
+      "actions": [
+        "pointer:starlight:title",
+        "key:Tab"
+      ],
+      "expect": {
+        "selected": "starlight",
+        "visible_focus_item": "warmframe",
+        "visible_focus_region": "whole_item",
+        "focus_visible": true
+      },
+      "context": {
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "dark/enter",
+      "actions": [
+        "key:Enter"
+      ],
+      "expect": {
+        "selected": "warmframe",
+        "visible_focus_item": "warmframe",
+        "visible_focus_region": "whole_item",
+        "focus_visible": true
+      },
+      "context": {
+        "theme": "dark"
+      }
+    },
+    {
+      "id": "dark/space",
+      "actions": [
+        "key:Space"
+      ],
+      "expect": {
+        "selected": "warmframe",
+        "visible_focus_item": "warmframe",
+        "visible_focus_region": "whole_item",
+        "focus_visible": true
+      },
+      "context": {
+        "theme": "dark"
+      }
+    }
+  ],
+  "context": {
+    "viewport": [
+      1280,
+      960
+    ],
+    "text_scale": 1,
+    "reduced": false
+  }
+}

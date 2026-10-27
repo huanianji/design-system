@@ -1,0 +1,768 @@
+[gd_scene load_steps=7 format=3]
+[ext_resource type="Script" path="res://adapters/godot/fragments.gd" id="1"]
+[ext_resource type="Theme" path="res://generated/editor-theme.tres" id="2"]
+[ext_resource type="Script" path="res://adapters/godot/canvas_preview.gd" id="3"]
+[ext_resource type="Script" path="res://adapters/godot/check_visual.gd" id="4"]
+[ext_resource type="Texture2D" path="res://assets/icons/chevron.svg" id="5"]
+[sub_resource type="StyleBoxLine" id="Divider"]
+color = Color(0.5,0.5,0.55,0.25)
+
+[node name="Fragments" type="Control"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2")
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Shell" type="MarginContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Stack" type="VBoxContainer" parent="Shell"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Toolbar" type="HFlowContainer" parent="Shell/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SourceStamp" type="Label" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Godot 原生"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+custom_minimum_size = Vector2(180,40)
+vertical_alignment = 1
+
+[node name="ManagementView" type="Button" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "管理工作台"
+custom_minimum_size = Vector2(0,40)
+toggle_mode = true
+button_pressed = true
+
+[node name="CreativeView" type="Button" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "创作工作台"
+custom_minimum_size = Vector2(0,40)
+toggle_mode = true
+
+[node name="Mode" type="Button" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "切换深色"
+custom_minimum_size = Vector2(0,40)
+
+[node name="TextScale" type="Button" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "字号 125%"
+custom_minimum_size = Vector2(0,40)
+
+[node name="Reduce" type="Button" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "减少动态"
+custom_minimum_size = Vector2(0,40)
+toggle_mode = true
+
+[node name="SimulateFailure" type="Button" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "模拟保存失败"
+custom_minimum_size = Vector2(0,40)
+toggle_mode = true
+
+[node name="Reload" type="Button" parent="Shell/Stack/Toolbar"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重新读取设计"
+custom_minimum_size = Vector2(0,40)
+
+[node name="Scroll" type="ScrollContainer" parent="Shell/Stack"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 4
+
+[node name="Center" type="HBoxContainer" parent="Shell/Stack/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="LeftSpace" type="Control" parent="Shell/Stack/Scroll/Center"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="Workspace" type="PanelContainer" parent="Shell/Stack/Scroll/Center"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+custom_minimum_size = Vector2(1200,0)
+
+[node name="Body" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Management" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ManagementHead" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ManagementTitles" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementHead"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="ManagementTitle" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementHead/ManagementTitles"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "今晚的开播安排"
+autowrap_mode = 3
+theme_type_variation = "Heading"
+
+[node name="ManagementIntro" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementHead/ManagementTitles"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "先把小事安排好，再安心迎接每一场直播。"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+
+[node name="AttentionAction" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementHead"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "查看待确认"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "Action"
+size_flags_vertical = 4
+
+[node name="RosterTools" type="HFlowContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Query" type="LineEdit" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/RosterTools"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(250,42)
+placeholder_text = "搜索主播或场次"
+caret_blink = true
+
+[node name="AllFilter" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/RosterTools"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "全部 6"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="AttentionFilter" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/RosterTools"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "待确认 2"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="LiveFilter" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/RosterTools"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "直播中 1"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="ScheduledFilter" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/RosterTools"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "待开播 2"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="ManagementGrid" type="GridContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 28
+
+[node name="RosterRegion" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RosterHeading" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/RosterRegion"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RosterTitle" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/RosterRegion/RosterHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "主播名单"
+autowrap_mode = 0
+theme_type_variation = "Section"
+size_flags_horizontal = 3
+
+[node name="ResultCount" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/RosterRegion/RosterHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "显示 6 位"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="Roster" type="Tree" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/RosterRegion"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(420,0)
+size_flags_horizontal = 3
+size_flags_vertical = 0
+hide_root = true
+columns = 4
+column_titles_visible = true
+hide_folding = true
+select_mode = 1
+scroll_vertical_enabled = false
+theme_type_variation = "RosterTree"
+
+[node name="RosterEmpty" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/RosterRegion"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "没有符合条件的主播。试试其他关键词或状态。"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+visible = false
+
+[node name="DetailPanel" type="PanelContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(320,0)
+size_flags_vertical = 0
+theme_type_variation = "FramePanel"
+
+[node name="DetailStack" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DetailEmpty" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择一位主播，查看准备事项。"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+visible = false
+
+[node name="DetailContent" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DetailHead" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DetailTitles" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/DetailHead"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 4
+
+[node name="DetailCaption" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/DetailHead/DetailTitles"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "开播准备"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="DetailName" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/DetailHead/DetailTitles"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "林汐"
+autowrap_mode = 0
+theme_type_variation = "Section"
+
+[node name="DetailStatus" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/DetailHead"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "待确认"
+autowrap_mode = 0
+theme_type_variation = "Warning"
+vertical_alignment = 1
+
+[node name="DetailSlot" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "时段  19:30—22:00"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="DetailTopic" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "内容  夜间电台 · 聊聊今天的小确幸"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+
+[node name="Microphone" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "麦克风开启"
+custom_minimum_size = Vector2(0,44)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+button_pressed = true
+
+[node name="CheckHeading" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ChecksTitle" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/CheckHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "准备事项"
+autowrap_mode = 0
+theme_type_variation = "StrongBody"
+size_flags_horizontal = 3
+
+[node name="ReadyCount" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/CheckHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "2 / 3 已确认"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="Checks" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Task0" type="CheckBox" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/Checks"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0,44)
+theme_type_variation = "TaskCheck"
+
+[node name="TaskArt0" type="Control" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/Checks/Task0"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10
+offset_top = 8
+offset_right = 38
+offset_bottom = 36
+mouse_filter = 2
+script = ExtResource("4")
+glyph_offset_x = -1.5
+
+[node name="Task1" type="CheckBox" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/Checks"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0,44)
+theme_type_variation = "TaskCheck"
+
+[node name="TaskArt1" type="Control" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/Checks/Task1"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10
+offset_top = 8
+offset_right = 38
+offset_bottom = 36
+mouse_filter = 2
+script = ExtResource("4")
+glyph_offset_x = -1.5
+
+[node name="Task2" type="CheckBox" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/Checks"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0,44)
+theme_type_variation = "TaskCheck"
+
+[node name="TaskArt2" type="Control" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/Checks/Task2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 10
+offset_top = 8
+offset_right = 38
+offset_bottom = 36
+mouse_filter = 2
+script = ExtResource("4")
+glyph_offset_x = -1.5
+
+[node name="NoteToggle" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "展开开播备注"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "NoteDisclosure"
+alignment = 0
+
+[node name="NoteArrow" type="TextureRect" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/NoteToggle"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 220
+offset_top = 12
+offset_right = 236
+offset_bottom = 28
+mouse_filter = 2
+texture = ExtResource("5")
+expand_mode = 1
+
+[node name="NoteReveal" type="Control" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent"]
+unique_name_in_owner = true
+layout_mode = 2
+clip_contents = true
+
+[node name="NoteInner" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/NoteReveal"]
+unique_name_in_owner = true
+layout_mode = 0
+anchor_right = 1.0
+offset_bottom = 126
+theme_override_constants/separation = 8
+
+[node name="NoteLabel" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/NoteReveal/NoteInner"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "开播备注"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="Note" type="TextEdit" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/NoteReveal/NoteInner"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0,100)
+theme_type_variation = "NoteInput"
+wrap_mode = 1
+focus_mode = 0
+
+[node name="NoteSave" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/NoteReveal/NoteInner"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "保存备注"
+custom_minimum_size = Vector2(140,44)
+theme_type_variation = "Action"
+size_flags_horizontal = 0
+
+[node name="NoteMessage" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Management/ManagementGrid/DetailPanel/DetailStack/DetailContent/NoteReveal/NoteInner"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ""
+autowrap_mode = 3
+theme_type_variation = "Muted"
+custom_minimum_size = Vector2(0,44)
+
+[node name="Creative" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+visible = false
+
+[node name="CreativeHead" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CreativeTitles" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeHead"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="CreativeTitle" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeHead/CreativeTitles"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "给直播间换一点新鲜感"
+autowrap_mode = 3
+theme_type_variation = "Heading"
+
+[node name="CreativeIntro" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeHead/CreativeTitles"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选一份素材，在预览里找到合适的位置和轻重。"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+
+[node name="CreativeCaption" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeHead"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "素材预览"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+vertical_alignment = 1
+
+[node name="CreativeGrid" type="GridContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative"]
+unique_name_in_owner = true
+layout_mode = 2
+columns = 2
+theme_override_constants/h_separation = 24
+
+[node name="PreviewColumn" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PreviewHeading" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="AssetTitle" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn/PreviewHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "星河开场"
+autowrap_mode = 0
+theme_type_variation = "Section"
+size_flags_horizontal = 3
+
+[node name="Resolution" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn/PreviewHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1280 × 720"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="Canvas" type="Control" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0,350)
+size_flags_horizontal = 3
+clip_contents = true
+script = ExtResource("3")
+
+[node name="LibraryHeading" type="HFlowContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="LibraryLabel" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn/LibraryHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "选择素材"
+autowrap_mode = 0
+theme_type_variation = "StrongBody"
+custom_minimum_size = Vector2(125,38)
+vertical_alignment = 1
+
+[node name="CategoryAll" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn/LibraryHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "全部"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="CategoryOpening" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn/LibraryHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "开场"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="CategoryFrame" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn/LibraryHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "边框"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="CategoryScene" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn/LibraryHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "场景"
+custom_minimum_size = Vector2(0,40)
+theme_type_variation = "SmallButton"
+toggle_mode = true
+
+[node name="AssetStrip" type="HFlowContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/PreviewColumn"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 12
+
+[node name="Inspector" type="PanelContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(248,0)
+size_flags_vertical = 0
+theme_type_variation = "FramePanel"
+
+[node name="InspectorBody" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="InspectorInfo" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CurrentLabel" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/InspectorInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "当前素材"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="InspectorName" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/InspectorInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "星河开场"
+autowrap_mode = 0
+theme_type_variation = "Section"
+
+[node name="AssetDescription" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/InspectorInfo"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "星点和光弧，为开场留一片安静的空间。"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+
+[node name="ZoomGroup" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ZoomHeading" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/ZoomGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ZoomCaption" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/ZoomGroup/ZoomHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "缩放"
+autowrap_mode = 0
+size_flags_horizontal = 3
+
+[node name="ZoomValue" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/ZoomGroup/ZoomHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+autowrap_mode = 0
+
+[node name="Zoom" type="HSlider" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/ZoomGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0,30)
+min_value = 50
+max_value = 140
+value = 100
+step = 1
+
+[node name="OpacityGroup" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="OpacityHeading" type="HBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/OpacityGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="OpacityCaption" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/OpacityGroup/OpacityHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "透明度"
+autowrap_mode = 0
+size_flags_horizontal = 3
+
+[node name="OpacityValue" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/OpacityGroup/OpacityHeading"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+autowrap_mode = 0
+
+[node name="Opacity" type="HSlider" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/OpacityGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+custom_minimum_size = Vector2(0,30)
+min_value = 0
+max_value = 100
+value = 100
+step = 1
+
+[node name="ResetPreview" type="Button" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "重置预览"
+custom_minimum_size = Vector2(0,40)
+
+[node name="PreviewStatus" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "默认预览"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="PreviewNoteGroup" type="VBoxContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="PreviewDivider" type="HSeparator" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/PreviewNoteGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("Divider")
+
+[node name="PreviewNote" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Creative/CreativeGrid/Inspector/InspectorBody/PreviewNoteGroup"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "参数只影响这里的预览，原素材保持不变。"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+
+[node name="Divider" type="HSeparator" parent="Shell/Stack/Scroll/Center/Workspace/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_styles/separator = SubResource("Divider")
+
+[node name="Footer" type="HFlowContainer" parent="Shell/Stack/Scroll/Center/Workspace/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Signature" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "华年集出品"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="Disclaimer" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "固定演示内容，修改仅保留在当前窗口。"
+autowrap_mode = 3
+theme_type_variation = "Muted"
+size_flags_horizontal = 3
+
+[node name="LocalScope" type="Label" parent="Shell/Stack/Scroll/Center/Workspace/Body/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "本地状态演示 · 不连接麦克风设备或业务服务"
+autowrap_mode = 0
+theme_type_variation = "Muted"
+
+[node name="RightSpace" type="Control" parent="Shell/Stack/Scroll/Center"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2

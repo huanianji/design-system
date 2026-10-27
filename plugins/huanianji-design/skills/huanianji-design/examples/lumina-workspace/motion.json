@@ -1,0 +1,58 @@
+{
+  "press_scale": 0.95,
+  "press_seconds": 0.095,
+  "press_easing": [
+    0,
+    0,
+    0.58,
+    1
+  ],
+  "release_peak": 1.055,
+  "release_return": 0.985,
+  "release_seconds": 0.44,
+  "release_offsets": [
+    0.42,
+    0.72
+  ],
+  "release_easing": [
+    0.2,
+    0.75,
+    0.3,
+    1
+  ],
+  "select_seconds": 0.3,
+  "detail_start_scale": 0.97,
+  "detail_peak_scale": 1.015,
+  "detail_return_scale": 0.995,
+  "detail_distance": 10,
+  "expand_seconds": 0.44,
+  "bell_degrees": [
+    -16,
+    13,
+    -7,
+    0
+  ],
+  "bell_seconds": 0.48,
+  "tab_release_peak": 1.025,
+  "check_press_scale": 0.86,
+  "check_press_seconds": 0.065,
+  "check_release_seconds": 0.36,
+  "check_draw_seconds": 0.18,
+  "expand_limit": 8.0,
+  "expand_ratio": 0.12,
+  "collapse_lift_ratio": 0.6,
+  "expand_return_ratio": 0.25,
+  "expand_offsets": [
+    0,
+    0.56,
+    0.8,
+    1
+  ],
+  "collapse_offsets": [
+    0,
+    0.18,
+    1
+  ],
+  "input_enter_ratio": 0.65,
+  "input_error_distance": 4
+}

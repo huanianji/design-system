@@ -1,0 +1,20 @@
+{
+  "Title": "开播准备",
+  "Subtitle": "把声音、画面和今晚的话题准备好",
+  "TopicLabel": "今晚想聊什么？",
+  "TopicInput": "一起聊聊最近的小确幸",
+  "ReadyCheck": "麦克风与音量已确认",
+  "FrameTitle": "画面与布局",
+  "SceneLabel": "主播画面",
+  "Action": "试试按钮回弹",
+  "ActionNote": "按下，再松开，感受落稳。",
+  "SuccessState": "✓ 已准备",
+  "WarningState": "! 待确认",
+  "ErrorState": "× 有问题",
+  "Numbers": "96.5% · 12:34",
+  "Signature": "华年集出品",
+  "FontSample": "中文 Aa 123 · 🚀",
+  "Tab0": "开播前",
+  "Tab1": "直播中",
+  "Tab2": "结束后"
+}

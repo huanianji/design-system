@@ -1,0 +1,18 @@
+{
+  "groups": {"daily":"日常文字","mixed":"混排与数据","fallback":"回退与边界"},
+  "input": "今晚开播 Live 2026，先确认声音。",
+  "cases": [
+    {"id":"title","group":"daily","label":"页面标题 · 600","role":"title","weight":600,"text":"把创作安排得刚刚好"},
+    {"id":"section","group":"daily","label":"分组标题 · 600","role":"section","weight":600,"text":"今晚的开播准备"},
+    {"id":"body","group":"daily","label":"正文 · 400","role":"body","weight":400,"text":"林汐，先检查声音与画面，再安心迎接每一场直播。我们希望每一个细节都清楚、顺手。"},
+    {"id":"small","group":"daily","label":"辅助信息 · 400","role":"small","weight":400,"text":"华年集出品 · 共华年 / 光影集 / 白宝集 / 米鹿工坊 / 米鹿AI"},
+    {"id":"mixed","group":"mixed","label":"中文、英文与数字","role":"body","weight":400,"text":"米鹿工坊 Milu Studio · Live 2026 / OBS 32 · 1920 × 1080 @ 60 fps"},
+    {"id":"punctuation","group":"mixed","label":"标点与金额样本","role":"body","weight":400,"text":"「开播啦！」“今天也辛苦了”——声音 −6 dB；完成 75.5%，示例金额 ￥1,234.56。"},
+    {"id":"long","group":"mixed","label":"长文与长文件名","role":"body","weight":400,"text":"这是一段用于检查换行的说明：给正在说话的人留出空间，也给重要的信息留出位置。文件名 streaming_scene_camera_configuration_2026_10_27.json 应能完整阅读，文字放大后继续自然换行。"},
+    {"id":"traditional","group":"fallback","label":"繁体与常见姓名字","role":"body","weight":400,"text":"華年集・直播畫面與聲音已確認。绮音、霁月、婧然、喆安、槿禾。"},
+    {"id":"rare","group":"fallback","label":"主字库缺字时的实际回退","role":"body","weight":400,"text":"𠮷野家 · 𠮶 · 𡈽 · 𩸽"},
+    {"id":"graphemes","group":"fallback","label":"组合字符与表情","role":"body","weight":400,"text":"Café / Café · 👩🏽‍💻 · 🚀 · 🇨🇳"},
+    {"id":"scripts","group":"fallback","label":"其他文字的回退样本","role":"body","weight":400,"text":"七海あおい / 한별 Nana"},
+    {"id":"boundary","group":"fallback","label":"覆盖边界样本","role":"body","weight":400,"text":"罕见扩展汉字：𱻀","expected_missing":true,"note":"这是覆盖边界检查，允许出现缺字占位；它不计入常用界面文字通过范围。"}
+  ]
+}

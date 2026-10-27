@@ -1,0 +1,499 @@
+{
+  "scope": "字体角色、混排、回退对照、字号/主题接续",
+  "context_keys": [
+    "build_id",
+    "fixture",
+    "viewport",
+    "theme",
+    "text_scale"
+  ],
+  "equal_fields": [
+    "group",
+    "fallback",
+    "primary_loaded",
+    "draft",
+    "samples",
+    "horizontal_overflow"
+  ],
+  "cases": [
+    {
+      "id": "daily",
+      "actions": [],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "light",
+        "text_scale": 1
+      },
+      "expect": {
+        "group": "daily",
+        "fallback": false,
+        "primary_loaded": true,
+        "draft": "今晚开播 Live 2026，先确认声音。",
+        "samples": [
+          {
+            "id": "title",
+            "role": "title",
+            "weight": 600,
+            "text": "把创作安排得刚刚好"
+          },
+          {
+            "id": "section",
+            "role": "section",
+            "weight": 600,
+            "text": "今晚的开播准备"
+          },
+          {
+            "id": "body",
+            "role": "body",
+            "weight": 400,
+            "text": "林汐，先检查声音与画面，再安心迎接每一场直播。我们希望每一个细节都清楚、顺手。"
+          },
+          {
+            "id": "small",
+            "role": "small",
+            "weight": 400,
+            "text": "华年集出品 · 共华年 / 光影集 / 白宝集 / 米鹿工坊 / 米鹿AI"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "mixed",
+      "actions": [
+        "pointer:group:mixed"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "light",
+        "text_scale": 1
+      },
+      "expect": {
+        "group": "mixed",
+        "fallback": false,
+        "primary_loaded": true,
+        "draft": "今晚开播 Live 2026，先确认声音。",
+        "samples": [
+          {
+            "id": "mixed",
+            "role": "body",
+            "weight": 400,
+            "text": "米鹿工坊 Milu Studio · Live 2026 / OBS 32 · 1920 × 1080 @ 60 fps"
+          },
+          {
+            "id": "punctuation",
+            "role": "body",
+            "weight": 400,
+            "text": "「开播啦！」“今天也辛苦了”——声音 −6 dB；完成 75.5%，示例金额 ￥1,234.56。"
+          },
+          {
+            "id": "long",
+            "role": "body",
+            "weight": 400,
+            "text": "这是一段用于检查换行的说明：给正在说话的人留出空间，也给重要的信息留出位置。文件名 streaming_scene_camera_configuration_2026_10_27.json 应能完整阅读，文字放大后继续自然换行。"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "fallback",
+      "actions": [
+        "pointer:group:fallback"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "light",
+        "text_scale": 1
+      },
+      "expect": {
+        "group": "fallback",
+        "fallback": false,
+        "primary_loaded": true,
+        "draft": "今晚开播 Live 2026，先确认声音。",
+        "samples": [
+          {
+            "id": "traditional",
+            "role": "body",
+            "weight": 400,
+            "text": "華年集・直播畫面與聲音已確認。绮音、霁月、婧然、喆安、槿禾。"
+          },
+          {
+            "id": "rare",
+            "role": "body",
+            "weight": 400,
+            "text": "𠮷野家 · 𠮶 · 𡈽 · 𩸽"
+          },
+          {
+            "id": "graphemes",
+            "role": "body",
+            "weight": 400,
+            "text": "Café / Café · 👩🏽‍💻 · 🚀 · 🇨🇳"
+          },
+          {
+            "id": "scripts",
+            "role": "body",
+            "weight": 400,
+            "text": "七海あおい / 한별 Nana"
+          },
+          {
+            "id": "boundary",
+            "role": "body",
+            "weight": 400,
+            "text": "罕见扩展汉字：𱻀"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "large-dark",
+      "actions": [
+        "pointer:mode",
+        "pointer:scale"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "dark",
+        "text_scale": 1.25
+      },
+      "expect": {
+        "group": "fallback",
+        "fallback": false,
+        "primary_loaded": true,
+        "draft": "今晚开播 Live 2026，先确认声音。",
+        "samples": [
+          {
+            "id": "traditional",
+            "role": "body",
+            "weight": 400,
+            "text": "華年集・直播畫面與聲音已確認。绮音、霁月、婧然、喆安、槿禾。"
+          },
+          {
+            "id": "rare",
+            "role": "body",
+            "weight": 400,
+            "text": "𠮷野家 · 𠮶 · 𡈽 · 𩸽"
+          },
+          {
+            "id": "graphemes",
+            "role": "body",
+            "weight": 400,
+            "text": "Café / Café · 👩🏽‍💻 · 🚀 · 🇨🇳"
+          },
+          {
+            "id": "scripts",
+            "role": "body",
+            "weight": 400,
+            "text": "七海あおい / 한별 Nana"
+          },
+          {
+            "id": "boundary",
+            "role": "body",
+            "weight": 400,
+            "text": "罕见扩展汉字：𱻀"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "system-daily",
+      "actions": [
+        "pointer:group:daily",
+        "pointer:mode",
+        "pointer:scale",
+        "pointer:fallback"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "light",
+        "text_scale": 1
+      },
+      "expect": {
+        "group": "daily",
+        "fallback": true,
+        "primary_loaded": true,
+        "draft": "今晚开播 Live 2026，先确认声音。",
+        "samples": [
+          {
+            "id": "title",
+            "role": "title",
+            "weight": 600,
+            "text": "把创作安排得刚刚好"
+          },
+          {
+            "id": "section",
+            "role": "section",
+            "weight": 600,
+            "text": "今晚的开播准备"
+          },
+          {
+            "id": "body",
+            "role": "body",
+            "weight": 400,
+            "text": "林汐，先检查声音与画面，再安心迎接每一场直播。我们希望每一个细节都清楚、顺手。"
+          },
+          {
+            "id": "small",
+            "role": "small",
+            "weight": 400,
+            "text": "华年集出品 · 共华年 / 光影集 / 白宝集 / 米鹿工坊 / 米鹿AI"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "system-mixed",
+      "actions": [
+        "pointer:group:mixed"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "light",
+        "text_scale": 1
+      },
+      "expect": {
+        "group": "mixed",
+        "fallback": true,
+        "primary_loaded": true,
+        "draft": "今晚开播 Live 2026，先确认声音。",
+        "samples": [
+          {
+            "id": "mixed",
+            "role": "body",
+            "weight": 400,
+            "text": "米鹿工坊 Milu Studio · Live 2026 / OBS 32 · 1920 × 1080 @ 60 fps"
+          },
+          {
+            "id": "punctuation",
+            "role": "body",
+            "weight": 400,
+            "text": "「开播啦！」“今天也辛苦了”——声音 −6 dB；完成 75.5%，示例金额 ￥1,234.56。"
+          },
+          {
+            "id": "long",
+            "role": "body",
+            "weight": 400,
+            "text": "这是一段用于检查换行的说明：给正在说话的人留出空间，也给重要的信息留出位置。文件名 streaming_scene_camera_configuration_2026_10_27.json 应能完整阅读，文字放大后继续自然换行。"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "system-fallback",
+      "actions": [
+        "pointer:group:fallback"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "light",
+        "text_scale": 1
+      },
+      "expect": {
+        "group": "fallback",
+        "fallback": true,
+        "primary_loaded": true,
+        "draft": "今晚开播 Live 2026，先确认声音。",
+        "samples": [
+          {
+            "id": "traditional",
+            "role": "body",
+            "weight": 400,
+            "text": "華年集・直播畫面與聲音已確認。绮音、霁月、婧然、喆安、槿禾。"
+          },
+          {
+            "id": "rare",
+            "role": "body",
+            "weight": 400,
+            "text": "𠮷野家 · 𠮶 · 𡈽 · 𩸽"
+          },
+          {
+            "id": "graphemes",
+            "role": "body",
+            "weight": 400,
+            "text": "Café / Café · 👩🏽‍💻 · 🚀 · 🇨🇳"
+          },
+          {
+            "id": "scripts",
+            "role": "body",
+            "weight": 400,
+            "text": "七海あおい / 한별 Nana"
+          },
+          {
+            "id": "boundary",
+            "role": "body",
+            "weight": 400,
+            "text": "罕见扩展汉字：𱻀"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "typed",
+      "actions": [
+        "pointer:fallback",
+        "pointer:group:daily",
+        "text:draft:开播 Live 2026，𠮷野家 👩🏽‍💻"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "light",
+        "text_scale": 1
+      },
+      "expect": {
+        "group": "daily",
+        "fallback": false,
+        "primary_loaded": true,
+        "draft": "开播 Live 2026，𠮷野家 👩🏽‍💻",
+        "samples": [
+          {
+            "id": "title",
+            "role": "title",
+            "weight": 600,
+            "text": "把创作安排得刚刚好"
+          },
+          {
+            "id": "section",
+            "role": "section",
+            "weight": 600,
+            "text": "今晚的开播准备"
+          },
+          {
+            "id": "body",
+            "role": "body",
+            "weight": 400,
+            "text": "林汐，先检查声音与画面，再安心迎接每一场直播。我们希望每一个细节都清楚、顺手。"
+          },
+          {
+            "id": "small",
+            "role": "small",
+            "weight": 400,
+            "text": "华年集出品 · 共华年 / 光影集 / 白宝集 / 米鹿工坊 / 米鹿AI"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "retained",
+      "actions": [
+        "pointer:mode",
+        "pointer:scale"
+      ],
+      "context": {
+        "viewport": [
+          1280,
+          960
+        ],
+        "theme": "dark",
+        "text_scale": 1.25
+      },
+      "expect": {
+        "group": "daily",
+        "fallback": false,
+        "primary_loaded": true,
+        "draft": "开播 Live 2026，𠮷野家 👩🏽‍💻",
+        "samples": [
+          {
+            "id": "title",
+            "role": "title",
+            "weight": 600,
+            "text": "把创作安排得刚刚好"
+          },
+          {
+            "id": "section",
+            "role": "section",
+            "weight": 600,
+            "text": "今晚的开播准备"
+          },
+          {
+            "id": "body",
+            "role": "body",
+            "weight": 400,
+            "text": "林汐，先检查声音与画面，再安心迎接每一场直播。我们希望每一个细节都清楚、顺手。"
+          },
+          {
+            "id": "small",
+            "role": "small",
+            "weight": 400,
+            "text": "华年集出品 · 共华年 / 光影集 / 白宝集 / 米鹿工坊 / 米鹿AI"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    },
+    {
+      "id": "compact",
+      "actions": [],
+      "context": {
+        "viewport": [
+          900,
+          960
+        ],
+        "theme": "dark",
+        "text_scale": 1.25
+      },
+      "expect": {
+        "group": "daily",
+        "fallback": false,
+        "primary_loaded": true,
+        "draft": "开播 Live 2026，𠮷野家 👩🏽‍💻",
+        "samples": [
+          {
+            "id": "title",
+            "role": "title",
+            "weight": 600,
+            "text": "把创作安排得刚刚好"
+          },
+          {
+            "id": "section",
+            "role": "section",
+            "weight": 600,
+            "text": "今晚的开播准备"
+          },
+          {
+            "id": "body",
+            "role": "body",
+            "weight": 400,
+            "text": "林汐，先检查声音与画面，再安心迎接每一场直播。我们希望每一个细节都清楚、顺手。"
+          },
+          {
+            "id": "small",
+            "role": "small",
+            "weight": 400,
+            "text": "华年集出品 · 共华年 / 光影集 / 白宝集 / 米鹿工坊 / 米鹿AI"
+          }
+        ],
+        "horizontal_overflow": false
+      }
+    }
+  ]
+}

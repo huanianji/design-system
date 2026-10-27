@@ -1,0 +1,200 @@
+{
+  "font": {
+    "file": "assets/fonts/ResourceHanRoundedCN-VF.otf",
+    "regular_weight": 400,
+    "heading_weight": 600,
+    "body": 17,
+    "small": 14,
+    "title": 28,
+    "section": 19,
+    "family": "Huanianji UI"
+  },
+  "space": {
+    "page_large": 40,
+    "page_small": 24,
+    "panel": 32,
+    "frame": 24,
+    "scene": 18,
+    "group": 16,
+    "tight": 8,
+    "code_cell": 60,
+    "code_gap": 10
+  },
+  "shape": {
+    "panel": [
+      32,
+      52,
+      32,
+      32
+    ],
+    "frame": [
+      24,
+      38,
+      24,
+      24
+    ],
+    "button": [
+      14,
+      26,
+      14,
+      14
+    ],
+    "small": [
+      10,
+      18,
+      10,
+      10
+    ],
+    "micro": [
+      7,
+      11,
+      7,
+      7
+    ],
+    "check": [
+      8,
+      12,
+      8,
+      8
+    ]
+  },
+  "optical": {
+    "bell_x": -1.0,
+    "check_x": -1.5
+  },
+  "motion": {
+    "press_scale": 0.95,
+    "press_seconds": 0.095,
+    "press_easing": [
+      0,
+      0,
+      0.58,
+      1
+    ],
+    "release_peak": 1.055,
+    "release_return": 0.985,
+    "release_seconds": 0.44,
+    "release_offsets": [
+      0.42,
+      0.72
+    ],
+    "release_easing": [
+      0.2,
+      0.75,
+      0.3,
+      1
+    ],
+    "select_seconds": 0.3,
+    "detail_start_scale": 0.97,
+    "detail_peak_scale": 1.015,
+    "detail_return_scale": 0.995,
+    "detail_distance": 10,
+    "expand_seconds": 0.44,
+    "bell_degrees": [
+      -16,
+      13,
+      -7,
+      0
+    ],
+    "bell_seconds": 0.48,
+    "tab_release_peak": 1.025,
+    "check_press_scale": 0.86,
+    "check_press_seconds": 0.065,
+    "check_release_seconds": 0.36,
+    "check_draw_seconds": 0.18,
+    "expand_limit": 8.0,
+    "expand_ratio": 0.12,
+    "collapse_lift_ratio": 0.6,
+    "expand_return_ratio": 0.25,
+    "expand_offsets": [
+      0,
+      0.56,
+      0.8,
+      1
+    ],
+    "collapse_offsets": [
+      0,
+      0.18,
+      1
+    ],
+    "input_enter_ratio": 0.65,
+    "input_error_distance": 4
+  },
+  "light": {
+    "page": "#f2f2f3",
+    "paper": "#ffffff",
+    "soft": "#f5f5f6",
+    "ink": "#27272b",
+    "muted": "#62626b",
+    "line": "#d4d4dc",
+    "control_line": "#858590",
+    "success": "#277059",
+    "warning": "#8b590b",
+    "error": "#b43e4b"
+  },
+  "dark": {
+    "page": "#19191c",
+    "paper": "#252528",
+    "soft": "#303034",
+    "ink": "#eeeef2",
+    "muted": "#bcbcc5",
+    "line": "#585862",
+    "control_line": "#8d8d98",
+    "success": "#9edfc8",
+    "warning": "#efc681",
+    "error": "#ffa6b0"
+  },
+  "accents": {
+    "indigo": {
+      "light": {
+        "accent": "#4b60c4",
+        "wash": "#ecf0ff",
+        "action": "#303a61",
+        "action_ink": "#ffffff"
+      },
+      "dark": {
+        "accent": "#c3cdff",
+        "wash": "#3b4468",
+        "action": "#c4ceff",
+        "action_ink": "#252d48"
+      }
+    },
+    "jade": {
+      "light": {
+        "accent": "#256f5a",
+        "wash": "#e8f4ef",
+        "action": "#285e50",
+        "action_ink": "#ffffff"
+      },
+      "dark": {
+        "accent": "#a4e1cc",
+        "wash": "#304c43",
+        "action": "#a4e1cc",
+        "action_ink": "#203a30"
+      }
+    }
+  },
+  "format_version": 1,
+  "baseline": "A-small-daily-2026-10-26",
+  "platforms": {
+    "web": {
+      "font_scale": 1.0,
+      "space_scale": 1.0,
+      "fallbacks": [
+        "PingFang SC",
+        "Microsoft YaHei",
+        "sans-serif"
+      ],
+      "line_height": 1.5
+    },
+    "godot": {
+      "font_scale": 1.0,
+      "space_scale": 1.0,
+      "fallbacks": [
+        "Apple Color Emoji",
+        "Segoe UI Emoji",
+        "Noto Color Emoji"
+      ]
+    }
+  }
+}

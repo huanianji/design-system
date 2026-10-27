@@ -1,0 +1,4 @@
+interface:
+  display_name: "华年集设计系统"
+  short_description: "为华年集项目选择视觉方向、维护项目设计档案并安排跨平台界面实现"
+  default_prompt: "使用 $huanianji-design，先读取目标项目已有设计档案和当前资源状态，再按本次需求推进华年集界面设计。"

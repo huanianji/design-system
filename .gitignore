@@ -1,0 +1,4 @@
+.DS_Store
+.godot/
+__pycache__/
+*.pyc

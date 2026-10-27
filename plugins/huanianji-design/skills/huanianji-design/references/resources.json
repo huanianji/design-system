@@ -1,0 +1,259 @@
+{
+  "phase": "portable-plugin-candidate",
+  "resources": [
+    {
+      "id": "common-rules",
+      "path": "references/common/华年集共同设计规则.md",
+      "state": "usable-draft",
+      "purpose": "字体/形状/运动、状态颜色、管理/创作方向及 §3.9 状态外观与滚动原则已确认；中性浅深背景可切换，强调色可换，具体参数待验证；软件不放母品牌 Logo，新 Logo 提案已终止；对勾仅用于待办/核对条目，普通开关用切换按钮状态"
+    },
+    {
+      "id": "project-record",
+      "path": "references/project-record.md",
+      "state": "available",
+      "purpose": "读取、更新与接续项目档案"
+    },
+    {
+      "id": "record-template",
+      "path": "templates/PROJECT-DESIGN.md",
+      "state": "available",
+      "purpose": "新项目档案模板"
+    },
+    {
+      "id": "direction-guide",
+      "path": "references/direction-guide.md",
+      "state": "usable-draft",
+      "purpose": "方向探索与已有主题延续"
+    },
+    {
+      "id": "web",
+      "path": "references/platforms/web.md",
+      "state": "first-batch-shared-controls-consumer",
+      "purpose": "Web共同源消费与首批按钮/Tab/局部展开公共实现已提供；基础和片段实际复用，完整组件范围未完成"
+    },
+    {
+      "id": "godot",
+      "path": "references/platforms/godot.md",
+      "state": "native-first-batch-shared-controls-consumer",
+      "purpose": "Godot原生共同主题与首批按钮/Tab/局部展开已提供；基础和片段实际复用，N/T保留历史，目标系统与完整组件范围未完成"
+    },
+    {
+      "id": "godot-evaluation",
+      "path": "references/packaged-status.md",
+      "state": "implemented-local-experiment",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。能力对照、原始规格及已完成实验的结论入口；实验通过不等于正式依赖采用或 P2 验收",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "godot-minimal-evidence",
+      "path": "references/packaged-status.md",
+      "state": "verified-local-experiment",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。本机同场景 N/T 实测；原生已选，当前小号与动态获认可，交互/收展反馈已有定向复验与录像，亮度效果已知待办，未接产品",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "runtime-status",
+      "path": "references/runtime-status.md",
+      "state": "local-conditions-verified",
+      "purpose": "本机运行条件的实际证据"
+    },
+    {
+      "id": "phase1-evidence",
+      "path": "references/packaged-status.md",
+      "state": "verified-phase1-only",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。本阶段调用、接续及运行条件的证据和使用说明",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "family-directions-preview",
+      "path": "references/packaged-status.md",
+      "state": "experimental-web-preview",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。维护者认可当前留白，A 为共同视觉基础；仅展示 A 的圆角、回弹与视觉对齐。预览旧署名尚未同步「华年集出品」，不能覆盖现行规则；不代表正式组件、参数冻结或 P2 验收",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "system-scope",
+      "path": "references/common/系统结构与首版交付.md",
+      "state": "baseline",
+      "purpose": "模块及第一版完成标准，直接读取原文"
+    },
+    {
+      "id": "roadmap",
+      "path": "references/common/首版实施路线与验收.md",
+      "state": "baseline",
+      "purpose": "阶段范围与验收门槛，直接读取原文"
+    },
+    {
+      "id": "shared-foundation",
+      "path": "references/shared-foundation.md",
+      "state": "shared-source-and-first-batch-controls",
+      "purpose": "共同源、产品覆盖、平台映射及首批公共组件入口；令牌构建不等于消费端版本，当前源码摘要见P3记录"
+    },
+    {
+      "id": "shared-source",
+      "path": "foundation/tokens/base.json",
+      "state": "initial-sample-baseline",
+      "purpose": "唯一共同数值源；已认可字号/形状/留白/动态的起始数据，可验证后修订，非全产品常数"
+    },
+    {
+      "id": "shared-sample-record",
+      "path": "references/packaged-status.md",
+      "state": "P3-P4-combined-current-record",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。当前合批实现、继承决定、实际证据与未验范围；原管理/创作片段在原入口升级",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "interaction-review",
+      "path": "references/interaction-review.md",
+      "state": "workflow-and-comparator-verified-on-media-and-management-cases",
+      "purpose": "角色/变体/业务分支/输入与中断的真实消费检查；包含按钮逐帧过程门禁，拒绝以结果状态或同令牌代替动效通过，未声明范围不得照搬已验结论"
+    },
+    {
+      "id": "theme-fragments",
+      "path": "foundation/web/fragments.html",
+      "state": "combined-workbenches-verified-local",
+      "purpose": "原入口升级管理/创作工作台，公共按钮/展开/普通输入/动态图标实际复用；30组操作、3组实际布局及16条过程成对验证，本地演示待整体人工认可"
+    },
+    {
+      "id": "theme-fragments-evidence",
+      "path": "references/packaged-status.md",
+      "state": "management-creative-family-baseline-user-accepted-theme-colors-excluded",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。管理/创作整体调性与家族关系、当前字体和局部排版基准已获认可；主题色不纳入认可，不固定为产品默认；保留实际输入、失败及复验，完整组件与目标系统仍有后续项",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "typography-sample",
+      "path": "foundation/web/typography.html",
+      "state": "local-font-role-baseline-accepted-platform-bounds-pending",
+      "purpose": "同内容字体、混排、数据、回退、浅深和125%检查台；数据400与等宽已补真实字形验证，Godot对应sample/typography.tscn；正式字族采用待确认"
+    },
+    {
+      "id": "typography-evidence",
+      "path": "references/packaged-status.md",
+      "state": "user-accepted-local-font-role-layout-baseline",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。当前片段字体/局部排版及P2本机整体基准已获用户认可；覆盖边界、字重/角色/列宽修复及两端复验可接续；其他系统仍待对应验证",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "phase2-acceptance",
+      "path": "references/packaged-status.md",
+      "state": "phase2-accepted-local-baseline-theme-colors-excluded",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。原P2五项门槛、本机已确认基准、证据时效、已完成G1与G2—G6后续缺口；维护者认可整体调性和家族关系，主题色不作为依据或固定默认；记录截至P2，后续P3/P4见当前合批",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "phase2-visual-board",
+      "path": "references/packaged-status.md",
+      "state": "matched-state-captures-user-accepted-theme-colors-excluded",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。当前2aef构建管理/创作及浅深共八幅实际运行画面，两端四组条件配对；整体关系已获用户认可，主题色不纳入考虑；静态照片不证明运动完全相同",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "public-controls-first-batch",
+      "path": "references/components-first-batch.md",
+      "state": "usable-first-batch-web-native-godot",
+      "purpose": "按钮、Tab/分段、局部展开公共入口和结构；共同状态、焦点、中断、清理、异步结果责任与现有消费者，AI应先复用，完整六类尚未完成；区分待办勾选与普通开关，后者以按下/选中态表示启用"
+    },
+    {
+      "id": "public-controls-lab",
+      "path": "foundation/web/controls.html",
+      "state": "actual-public-controls-consumer",
+      "purpose": "首批正常/禁用/在途/失败重试、Tab键盘、展开中断和移除重建；Godot对应sample/controls.tscn，本地任务模拟不代表真实服务；三个条件开关已改为切换按钮，不使用对勾"
+    },
+    {
+      "id": "phase3-first-batch-evidence",
+      "path": "references/packaged-status.md",
+      "state": "verified-local-first-batch-ready-for-user-review",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。首批实际输入、16个共同点配对、原生补验和旧样张回归；根因、采集器错误、画面及摘要可复查，整个P3/P4/P5与其他系统未完成",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "public-inputs",
+      "path": "references/components-inputs.md",
+      "state": "usable-web-native-godot-inputs",
+      "purpose": "普通输入与六位验证码公共实现、状态与中断、平台差异；现有备注实际复用，系统候选窗/自动填充/完整读屏待目标条件验证"
+    },
+    {
+      "id": "public-inputs-lab",
+      "path": "foundation/web/inputs.html",
+      "state": "actual-public-inputs-consumer",
+      "purpose": "普通备注与独立验证码；Godot对应sample/inputs.tscn；本地保存/验证模拟、浅深、放大、只读、禁用、失败重试"
+    },
+    {
+      "id": "phase3-inputs-evidence",
+      "path": "references/packaged-status.md",
+      "state": "user-accepted-current-local-sample-ime-pending",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。输入功能、真实备注复用及主操作动效漏检修复后本机样张获认可；包含修复前失败/修复后通过的强制过程门禁，系统候选窗等原待验范围保留",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "action-motion-gate",
+      "path": "references/packaged-status.md",
+      "state": "verified-current-consumers-before-fails-after-passes",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。真实消费按钮的过程门禁及同目录contract.json/曲线；当前两主操作各5条，已有收据强制调用，新页面须按实际变体/分支适配采集，不能直接套用结论",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "public-dynamic-icons",
+      "path": "references/components-dynamic-icons.md",
+      "state": "verified-current-web-native-godot-consumers",
+      "purpose": "提醒/麦克风状态/展开跟随；单一运动归属、视觉与命中分离、主题刷新/反向/减少动态及退出"
+    },
+    {
+      "id": "combined-workflows",
+      "path": "references/combined-workflows.md",
+      "state": "verified-local-real-input-and-motion-consumers",
+      "purpose": "管理草稿/保存/失败重试/取消归属与创作素材参数任务；AI从入口定位并复用真实公共实现"
+    },
+    {
+      "id": "daily-showcase",
+      "path": "foundation/web/showcase.html",
+      "state": "available-current-web-and-godot-navigation",
+      "purpose": "六类偏好与字体/组合使用的日常导航，Web直接体验及Godot对应场景和源码入口"
+    },
+    {
+      "id": "combined-evidence",
+      "path": "references/packaged-status.md",
+      "state": "local-sample-no-new-issues-reported-independent-validation-pending",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。P3/P4合批授权、实际输入和逐帧过程对照、修复、证据时效与未验边界；P5另行验证",
+      "distribution": "historical-summary-only"
+    },
+    {
+      "id": "plugin-distribution",
+      "path": "references/packaged-status.md",
+      "state": "local-package-verified-target-native-platforms-and-independent-AI-pending",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。插件包、跨平台安装入口、版本保留、17项隔离集成检查及Web/Godot实际运行；不接入Lumina正式产品",
+      "distribution": "historical-summary-only"
+    }
+  ],
+  "capabilities": {
+    "project_design_records": "available",
+    "record_continuation": "verified-local-record-writeback",
+    "runtime_conditions_macos_web_godot": "local-conditions-verified",
+    "common_rules": "usable-draft",
+    "direction_workflow": "usable-draft",
+    "final_brand_identity": "existing-logos-parent-logo-excluded-from-software",
+    "final_font_and_motion_parameters": "local-baseline-accepted-revisable-not-universal",
+    "theme_tokens": "initial-shared-source-and-platform-mapping",
+    "web_component_package": "buttons-tabs-disclosure-inputs-code-dynamic-icons-usable-local",
+    "godot_component_package": "native-buttons-tabs-disclosure-inputs-code-dynamic-icons-usable-local",
+    "godot_theme_comparison": "verified-macos-experiment-only",
+    "ios_adapter": "not-implemented",
+    "android_adapter": "not-implemented",
+    "desktop_native_adapter": "not-implemented",
+    "first_release_acceptance": "portable-package-target-platform-verification-required",
+    "web_godot_shared_consumption": "verified-local-minimal-baseline",
+    "management_creative_theme_fragments": "user-accepted-macos-web-godot-family-baseline-theme-colors-excluded",
+    "interaction_difference_review": "workflow-and-comparator-verified-two-real-cases",
+    "typography_macos_web_godot": "current-sample-baseline-user-accepted-target-platforms-pending",
+    "phase2_overall_acceptance": "phase2-accepted-local-baseline-theme-colors-excluded",
+    "public_controls_first_batch": "verified-local-actual-consumers-and-input-paths",
+    "complete_six_interaction_families": "implemented-and-verified-current-local-consumers-target-input-conditions-pending",
+    "public_inputs": "ordinary-fields-and-six-digit-code-available-local-ime-candidate-pending",
+    "dynamic_icons": "three-roles-actual-consumers-and-interruptions-verified-local",
+    "combined_management_creative": "implemented-and-verified-local-overall-user-review-pending",
+    "ai_current_asset_consumption": "main-session-entry-to-real-implementation-verified-independent-P5-pending",
+    "godot_real_product_case": "Lumina-local-native-preview-user-accepted-no-formal-integration-requested",
+    "plugin_distribution": "0.1.0-self-contained-zip-isolated-install-host-read-relocation-and-native-samples-verified-macos-target-platforms-pending"
+  }
+}

@@ -1,0 +1,43 @@
+async () => {
+  const $=id=>document.getElementById(id),wait=ms=>new Promise(r=>setTimeout(r,ms)),state=()=>window.themeFragments.getState(),checks=[];
+  const check=(name,passed,detail=null)=>checks.push({name,passed,detail});
+  const click=async id=>{$(id).click();await wait(450);};
+  const input=(id,value)=>{$(id).value=value;$(id).dispatchEvent(new Event('input',{bubbles:true}));};
+  await document.fonts.ready;
+  if(state().view!=='management')await click('management-view');
+  if(state().mode!=='light')await click('mode');
+  check('source_loaded',!$('workspace').hidden&&!state().stale,state().build_id);
+  check('shared_font_loaded',[...document.fonts].some(f=>f.family==='Huanianji UI'&&f.status==='loaded')&&getComputedStyle(document.body).fontSize==='17px');
+  check('management_default_count',state().visible.length===6&&state().selected==='linxi');
+  input('query','棠梨');check('search_selects_visible_person',state().visible.length===1&&state().selected==='tangli');
+  input('query','不存在的主播');check('empty_result_has_no_stale_detail',state().selected===null&&!$('detail-empty').hidden&&$('detail-content').hidden);
+  input('query','');document.querySelector('[data-status=attention]').click();
+  check('status_filter',state().visible.length===2&&state().selected==='linxi');
+  $('task-2').click();await wait(400);check('check_updates_person_and_roster',state().people.linxi.checks[2]&&document.querySelector('[data-person=linxi] .ready-cell').textContent==='3 / 3');
+  await click('note-toggle');input('note','跨主题保留的开播备注');$('note').focus();await click('mode');
+  check('management_theme_preserves_state_and_focus',state().people.linxi.note==='跨主题保留的开播备注'&&state().noteOpen&&state().status==='attention'&&document.activeElement===$('note'));
+  $('note-toggle').click();check('collapse_returns_hidden_input_focus',document.activeElement===$('note-toggle')&&$('note').disabled&&$('note-region').inert);
+  await wait(500);$('note-toggle').click();await wait(80);const before=parseFloat(getComputedStyle($('note-region')).height);$('note-toggle').click();
+  check('disclosure_interrupt_is_continuous',Math.abs(before-parseFloat(getComputedStyle($('note-region')).height))<1);
+  await click('reduce');check('reduced_motion_settles',parseFloat(getComputedStyle($('note-region')).height)===0&&state().reduced);await click('reduce');
+  const action=$('attention-action'),surface=action.firstElementChild,rect=action.getBoundingClientRect();
+  action.dispatchEvent(new PointerEvent('pointerdown',{button:0,bubbles:true}));await wait(200);const down=new DOMMatrixReadOnly(getComputedStyle(surface).transform).a;await wait(300);
+  check('long_press_holds',down<.96&&new DOMMatrixReadOnly(getComputedStyle(surface).transform).a<.96,down);
+  window.dispatchEvent(new PointerEvent('pointerup',{button:0,bubbles:true}));let peak=1,stable=true;const start=performance.now();while(performance.now()-start<520){peak=Math.max(peak,new DOMMatrixReadOnly(getComputedStyle(surface).transform).a);stable=stable&&Math.abs(action.getBoundingClientRect().width-rect.width)<.1;await new Promise(requestAnimationFrame);}
+  check('daily_rebound_and_stable_hit_area',peak>1.04&&stable,{peak});
+  const managementAccent=getComputedStyle(document.body).getPropertyValue('--hj-accent');await click('creative-view');
+  check('creative_has_distinct_profile',document.documentElement.dataset.profile==='creative'&&managementAccent!==getComputedStyle(document.body).getPropertyValue('--hj-accent'));
+  const art=$('art'),original=art.getBoundingClientRect().width;input('zoom',130);input('opacity',40);
+  check('continuous_controls_change_actual_image',art.getBoundingClientRect().width>original*1.29&&getComputedStyle(art).opacity==='0.4'&&state().previews.starlight.zoom===130);
+  const source=art.src,geometry=art.getBoundingClientRect().width,checker=getComputedStyle($('canvas')).backgroundImage;await click('mode');
+  check('theme_preserves_preview_source_geometry_and_values',art.src===source&&art.getBoundingClientRect().width===geometry&&getComputedStyle(art).opacity==='0.4'&&getComputedStyle(art).filter==='none'&&getComputedStyle($('canvas')).backgroundImage===checker);
+  document.querySelector('[data-asset=warmframe]').click();await wait(250);input('zoom',80);document.querySelector('[data-asset=starlight]').click();await wait(250);
+  check('parameters_are_per_asset',state().previews.warmframe.zoom===80&&state().previews.starlight.zoom===130&&getComputedStyle(art).opacity==='0.4');
+  check('asset_selection_retains_keyboard_focus',document.activeElement.dataset.asset==='starlight');
+  document.querySelector('[data-category=scene]').click();check('category_filters_actual_assets',state().asset==='window'&&$('asset-strip').children.length===1);
+  document.querySelector('[data-category=all]').click();document.querySelector('[data-asset=starlight]').click();await wait(250);$('reset-preview').click();
+  check('reset_changes_actual_image',state().previews.starlight.zoom===100&&getComputedStyle(art).opacity==='1'&&$('reset-preview').disabled);
+  await click('management-view');check('view_switch_preserves_management',state().people.linxi.checks[2]&&state().people.linxi.note==='跨主题保留的开播备注'&&state().selected==='linxi'&&state().status==='attention');
+  $('query').focus();await click('reload');check('reload_preserves_local_state',state().people.linxi.note==='跨主题保留的开播备注'&&state().people.linxi.checks[2]&&!state().stale);
+  return {url:location.href,build_id:state().build_id,checks,failed:checks.filter(c=>!c.passed),state:state()};
+}

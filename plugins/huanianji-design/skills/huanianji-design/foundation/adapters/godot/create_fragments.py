@@ -1,0 +1,111 @@
+from pathlib import Path
+import json,sys
+ROOT=Path(__file__).resolve().parents[2]
+has_theme=(ROOT/'generated/editor-theme.tres').is_file()
+glyph=0.0
+if len(sys.argv)>1:glyph=json.loads(Path(sys.argv[1]).read_text())['profiles']['management']['godot']['optical']['check_x']
+lines=['[gd_scene load_steps=%d format=3]'%(7 if has_theme else 6),
+'[ext_resource type="Script" path="res://adapters/godot/fragments.gd" id="1"]',
+*(['[ext_resource type="Theme" path="res://generated/editor-theme.tres" id="2"]'] if has_theme else []),
+'[ext_resource type="Script" path="res://adapters/godot/canvas_preview.gd" id="3"]',
+'[ext_resource type="Script" path="res://adapters/godot/check_visual.gd" id="4"]',
+'[ext_resource type="Texture2D" path="res://assets/icons/chevron.svg" id="5"]',
+'[sub_resource type="StyleBoxLine" id="Divider"]','color = Color(0.5,0.5,0.55,0.25)']
+def node(name,kind,parent=None,**props):
+ where='' if parent is None else ' parent="'+parent+'"'
+ lines.append('\n[node name="'+name+'" type="'+kind+'"'+where+']');lines.append('unique_name_in_owner = true')
+ for key,value in props.items():lines.append(key.replace('__','/')+' = '+str(value))
+ return name if parent=='.' else (parent+'/'+name if parent else '.')
+def label(name,parent,caption='',role=None,**extra):
+ wrapped={'ManagementTitle','ManagementIntro','CreativeTitle','CreativeIntro','DetailTopic','AssetDescription','PreviewNote','NoteMessage','Disclaimer','RosterEmpty','DetailEmpty'}
+ props={'layout_mode':2,'text':json.dumps(caption,ensure_ascii=False),'autowrap_mode':3 if name in wrapped else 0}
+ if role:props['theme_type_variation']=json.dumps(role)
+ props.update(extra);return node(name,'Label',parent,**props)
+def button(name,parent,caption,role=None,**extra):
+ props={'layout_mode':2,'text':json.dumps(caption,ensure_ascii=False),'custom_minimum_size':'Vector2(0,40)'}
+ if role:props['theme_type_variation']=json.dumps(role)
+ props.update(extra);return node(name,'Button',parent,**props)
+node('Fragments','Control',layout_mode=3,anchors_preset=15,anchor_right=1.0,anchor_bottom=1.0,grow_horizontal=2,grow_vertical=2,theme='ExtResource("2")' if has_theme else 'null',script='ExtResource("1")')
+node('Background','ColorRect','.',layout_mode=1,anchors_preset=15,anchor_right=1.0,anchor_bottom=1.0,mouse_filter=2)
+shell=node('Shell','MarginContainer','.',layout_mode=1,anchors_preset=15,anchor_right=1.0,anchor_bottom=1.0,theme_override_constants__margin_left=40,theme_override_constants__margin_right=40,theme_override_constants__margin_top=20,theme_override_constants__margin_bottom=20)
+stack=node('Stack','VBoxContainer',shell,layout_mode=2)
+bar=node('Toolbar','HFlowContainer',stack,layout_mode=2)
+label('SourceStamp',bar,'Godot 原生','Muted',custom_minimum_size='Vector2(180,40)',vertical_alignment=1)
+button('ManagementView',bar,'管理工作台',toggle_mode='true',button_pressed='true')
+button('CreativeView',bar,'创作工作台',toggle_mode='true')
+button('Mode',bar,'切换深色');button('TextScale',bar,'字号 125%');button('Reduce',bar,'减少动态',toggle_mode='true');button('SimulateFailure',bar,'模拟保存失败',toggle_mode='true');button('Reload',bar,'重新读取设计')
+scroll=node('Scroll','ScrollContainer',stack,layout_mode=2,size_flags_vertical=3,horizontal_scroll_mode=0,vertical_scroll_mode=4)
+center=node('Center','HBoxContainer',scroll,layout_mode=2,size_flags_horizontal=3)
+node('LeftSpace','Control',center,layout_mode=2,size_flags_horizontal=3,mouse_filter=2)
+workspace=node('Workspace','PanelContainer',center,layout_mode=2,size_flags_vertical=0,custom_minimum_size='Vector2(1200,0)')
+body=node('Body','VBoxContainer',workspace,layout_mode=2)
+manager=node('Management','VBoxContainer',body,layout_mode=2)
+head=node('ManagementHead','HBoxContainer',manager,layout_mode=2)
+titles=node('ManagementTitles','VBoxContainer',head,layout_mode=2,size_flags_horizontal=3,theme_override_constants__separation=6)
+label('ManagementTitle',titles,'今晚的开播安排','Heading');label('ManagementIntro',titles,'先把小事安排好，再安心迎接每一场直播。','Muted')
+button('AttentionAction',head,'查看待确认','Action',size_flags_vertical=4)
+tools=node('RosterTools','HFlowContainer',manager,layout_mode=2)
+node('Query','LineEdit',tools,layout_mode=2,custom_minimum_size='Vector2(250,42)',placeholder_text='"搜索主播或场次"',caret_blink='true')
+for key,caption in [('AllFilter','全部 6'),('AttentionFilter','待确认 2'),('LiveFilter','直播中 1'),('ScheduledFilter','待开播 2')]:button(key,tools,caption,'SmallButton',toggle_mode='true')
+grid=node('ManagementGrid','GridContainer',manager,layout_mode=2,columns=2,theme_override_constants__h_separation=28)
+roster=node('RosterRegion','VBoxContainer',grid,layout_mode=2,size_flags_horizontal=3)
+rh=node('RosterHeading','HBoxContainer',roster,layout_mode=2)
+label('RosterTitle',rh,'主播名单','Section',size_flags_horizontal=3);label('ResultCount',rh,'显示 6 位','Muted')
+node('Roster','Tree',roster,layout_mode=2,custom_minimum_size='Vector2(420,0)',size_flags_horizontal=3,size_flags_vertical=0,hide_root='true',columns=4,column_titles_visible='true',hide_folding='true',select_mode=1,scroll_vertical_enabled='false',theme_type_variation='"RosterTree"')
+label('RosterEmpty',roster,'没有符合条件的主播。试试其他关键词或状态。','Muted',visible='false')
+detail=node('DetailPanel','PanelContainer',grid,layout_mode=2,custom_minimum_size='Vector2(320,0)',size_flags_vertical=0,theme_type_variation='"FramePanel"')
+detail_stack=node('DetailStack','VBoxContainer',detail,layout_mode=2)
+label('DetailEmpty',detail_stack,'选择一位主播，查看准备事项。','Muted',visible='false')
+detail_body=node('DetailContent','VBoxContainer',detail_stack,layout_mode=2)
+dh=node('DetailHead','HBoxContainer',detail_body,layout_mode=2)
+dt=node('DetailTitles','VBoxContainer',dh,layout_mode=2,size_flags_horizontal=3,theme_override_constants__separation=4)
+label('DetailCaption',dt,'开播准备','Muted');label('DetailName',dt,'林汐','Section');label('DetailStatus',dh,'待确认','Warning',vertical_alignment=1)
+label('DetailSlot',detail_body,'时段  19:30—22:00','Muted');label('DetailTopic',detail_body,'内容  夜间电台 · 聊聊今天的小确幸','Muted')
+button('Microphone',detail_body,'麦克风开启','SmallButton',toggle_mode='true',button_pressed='true',custom_minimum_size='Vector2(0,44)')
+cr=node('CheckHeading','HBoxContainer',detail_body,layout_mode=2)
+label('ChecksTitle',cr,'准备事项','StrongBody',size_flags_horizontal=3);label('ReadyCount',cr,'2 / 3 已确认','Muted')
+checks=node('Checks','VBoxContainer',detail_body,layout_mode=2,theme_override_constants__separation=4)
+for i in range(3):
+ p=node('Task'+str(i),'CheckBox',checks,layout_mode=2,custom_minimum_size='Vector2(0,44)',theme_type_variation='"TaskCheck"')
+ node('TaskArt'+str(i),'Control',p,layout_mode=0,offset_left=10,offset_top=8,offset_right=38,offset_bottom=36,mouse_filter=2,script='ExtResource("4")',glyph_offset_x=glyph)
+toggle=button('NoteToggle',detail_body,'展开开播备注','NoteDisclosure',alignment=0)
+node('NoteArrow','TextureRect',toggle,layout_mode=0,offset_left=220,offset_top=12,offset_right=236,offset_bottom=28,mouse_filter=2,texture='ExtResource("5")',expand_mode=1)
+reveal=node('NoteReveal','Control',detail_body,layout_mode=2,clip_contents='true')
+inner=node('NoteInner','VBoxContainer',reveal,layout_mode=0,anchor_right=1.0,offset_bottom=126,theme_override_constants__separation=8)
+label('NoteLabel',inner,'开播备注','Muted')
+node('Note','TextEdit',inner,layout_mode=2,custom_minimum_size='Vector2(0,100)',theme_type_variation='"NoteInput"',wrap_mode=1,focus_mode=0)
+button('NoteSave',inner,'保存备注','Action',size_flags_horizontal=0,custom_minimum_size='Vector2(140,44)')
+label('NoteMessage',inner,'','Muted',custom_minimum_size='Vector2(0,44)')
+creator=node('Creative','VBoxContainer',body,layout_mode=2,visible='false')
+ch=node('CreativeHead','HBoxContainer',creator,layout_mode=2)
+ct=node('CreativeTitles','VBoxContainer',ch,layout_mode=2,size_flags_horizontal=3,theme_override_constants__separation=6)
+label('CreativeTitle',ct,'给直播间换一点新鲜感','Heading');label('CreativeIntro',ct,'选一份素材，在预览里找到合适的位置和轻重。','Muted')
+label('CreativeCaption',ch,'素材预览','Muted',vertical_alignment=1)
+cg=node('CreativeGrid','GridContainer',creator,layout_mode=2,columns=2,theme_override_constants__h_separation=24)
+preview=node('PreviewColumn','VBoxContainer',cg,layout_mode=2,size_flags_horizontal=3)
+ph=node('PreviewHeading','HBoxContainer',preview,layout_mode=2)
+label('AssetTitle',ph,'星河开场','Section',size_flags_horizontal=3);label('Resolution',ph,'1280 × 720','Muted')
+node('Canvas','Control',preview,layout_mode=2,custom_minimum_size='Vector2(0,350)',size_flags_horizontal=3,clip_contents='true',script='ExtResource("3")')
+lib=node('LibraryHeading','HFlowContainer',preview,layout_mode=2)
+label('LibraryLabel',lib,'选择素材','StrongBody',custom_minimum_size='Vector2(125,38)',vertical_alignment=1)
+for key,caption in [('CategoryAll','全部'),('CategoryOpening','开场'),('CategoryFrame','边框'),('CategoryScene','场景')]:button(key,lib,caption,'SmallButton',toggle_mode='true')
+node('AssetStrip','HFlowContainer',preview,layout_mode=2,theme_override_constants__h_separation=12)
+inspector=node('Inspector','PanelContainer',cg,layout_mode=2,custom_minimum_size='Vector2(248,0)',size_flags_vertical=0,theme_type_variation='"FramePanel"')
+ib=node('InspectorBody','VBoxContainer',inspector,layout_mode=2,theme_override_constants__separation=24)
+info=node('InspectorInfo','VBoxContainer',ib,layout_mode=2,theme_override_constants__separation=8)
+label('CurrentLabel',info,'当前素材','Muted');label('InspectorName',info,'星河开场','Section');label('AssetDescription',info,'星点和光弧，为开场留一片安静的空间。','Muted')
+for name,caption,minimum,maximum in [('Zoom','缩放',50,140),('Opacity','透明度',0,100)]:
+ group=node(name+'Group','VBoxContainer',ib,layout_mode=2,theme_override_constants__separation=12)
+ row=node(name+'Heading','HBoxContainer',group,layout_mode=2)
+ label(name+'Caption',row,caption,size_flags_horizontal=3);label(name+'Value',row,'100%')
+ node(name,'HSlider',group,layout_mode=2,custom_minimum_size='Vector2(0,30)',min_value=minimum,max_value=maximum,value=100,step=1)
+button('ResetPreview',ib,'重置预览')
+label('PreviewStatus',ib,'默认预览','Muted')
+preview_note=node('PreviewNoteGroup','VBoxContainer',ib,layout_mode=2,theme_override_constants__separation=12)
+node('PreviewDivider','HSeparator',preview_note,layout_mode=2,theme_override_styles__separator='SubResource("Divider")')
+label('PreviewNote',preview_note,'参数只影响这里的预览，原素材保持不变。','Muted')
+node('Divider','HSeparator',body,layout_mode=2,theme_override_styles__separator='SubResource("Divider")')
+foot=node('Footer','HFlowContainer',body,layout_mode=2)
+label('Signature',foot,'华年集出品','Muted');label('Disclaimer',foot,'固定演示内容，修改仅保留在当前窗口。','Muted',size_flags_horizontal=3);label('LocalScope',foot,'本地状态演示 · 不连接麦克风设备或业务服务','Muted')
+node('RightSpace','Control',center,layout_mode=2,size_flags_horizontal=3,mouse_filter=2)
+(ROOT/'sample/fragments.tscn').write_text('\n'.join(lines)+'\n')
