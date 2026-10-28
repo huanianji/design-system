@@ -515,6 +515,7 @@ func _input(event: InputEvent) -> void:
 func _verify() -> void:
 	await get_tree().create_timer(1).timeout
 	var report:Dictionary={"baseline":"1fed2c27f828aac05489c2b40818b9251a7db43b","engine":Engine.get_version_info().string,"checks":[]}
+	report["input_context"]={"window_size":str(get_window().size),"logical_size":str(size),"screen_transform":str(get_viewport().get_screen_transform())}
 	for key in references:
 		if references[key] is Control:
 			var control:Control=references[key]
@@ -563,7 +564,8 @@ func _verify() -> void:
 	get_viewport().get_texture().get_image().save_png("res://evidence/light-125.png")
 	# 用逻辑视口验证布局；物理窗口的Retina映射不作为本次Windows DPI证据。
 	get_window().content_scale_size=Vector2i(1200,760);await get_tree().create_timer(.4).timeout
-	report.checks.append({"name":"1200 by 760 logical viewport at 125 percent keeps sidebar and timeline inside viewport","ok":size.is_equal_approx(Vector2(1200,760)) and panels.output.get_global_rect().end.x<=size.x and timeline.get_global_rect().end.y<=size.y and references.tab_color.get_global_rect().end.x<=size.x,"logical_size":[size.x,size.y]})
+	await RenderingServer.frame_post_draw
+	report.checks.append({"name":"1200 by 760 logical viewport at 125 percent keeps sidebar and timeline inside viewport","ok":size.is_equal_approx(Vector2(1200,760)) and panels.output.get_global_rect().end.x<=size.x and timeline.get_global_rect().end.y<=size.y and references.tab_color.get_global_rect().end.x<=size.x,"logical_size":[size.x,size.y],"output_end":str(panels.output.get_global_rect().end),"timeline_end":str(timeline.get_global_rect().end),"tab_end":str(references.tab_color.get_global_rect().end)})
 	report.checks.append(_layout_check("light 125 narrow"))
 	get_viewport().get_texture().get_image().save_png("res://evidence/light-125-1200x760.png")
 	get_window().content_scale_size=Vector2i(1440,900)
@@ -590,8 +592,13 @@ func _layout_check(condition: String) -> Dictionary:
 	if references.undo.get_global_rect().position.x-menu_end<32:failures.append("toolbar group gap")
 	return {"name":"layout clearance "+condition,"ok":failures.is_empty(),"failures":failures}
 
+func _input_position(control: Control) -> Vector2:
+	# 原生输入坐标需包含窗口拉伸和黑边偏移，不能直接使用逻辑矩形。
+	return control.get_viewport().get_screen_transform()*control.get_global_transform_with_canvas()*(control.size*.5)
+
 func _pointer_click(control: Control) -> void:
-	var at:=control.get_global_rect().get_center()
+	await RenderingServer.frame_post_draw
+	var at:=_input_position(control)
 	var movement:=InputEventMouseMotion.new();movement.position=at;movement.global_position=at;Input.parse_input_event(movement)
 	var down:=InputEventMouseButton.new();down.button_index=MOUSE_BUTTON_LEFT;down.position=at;down.global_position=at;down.pressed=true;Input.parse_input_event(down)
 	await get_tree().process_frame
@@ -599,16 +606,20 @@ func _pointer_click(control: Control) -> void:
 	await get_tree().create_timer(.35).timeout
 
 func _pointer_drag(control: Control) -> void:
-	var at:=control.get_global_rect().get_center()
+	await RenderingServer.frame_post_draw
+	var at:=_input_position(control)
+	var transform:=control.get_viewport().get_screen_transform()*control.get_global_transform_with_canvas()
+	var delta:=transform.basis_xform(Vector2(48,0))
 	var down:=InputEventMouseButton.new();down.button_index=MOUSE_BUTTON_LEFT;down.position=at;down.global_position=at;down.pressed=true;Input.parse_input_event(down)
 	await get_tree().process_frame
-	var movement:=InputEventMouseMotion.new();movement.position=at+Vector2(48,0);movement.global_position=movement.position;movement.relative=Vector2(48,0);movement.button_mask=MOUSE_BUTTON_MASK_LEFT;Input.parse_input_event(movement)
+	var movement:=InputEventMouseMotion.new();movement.position=at+delta;movement.global_position=movement.position;movement.relative=delta;movement.button_mask=MOUSE_BUTTON_MASK_LEFT;Input.parse_input_event(movement)
 	await get_tree().process_frame
-	var up:InputEventMouseButton=down.duplicate();up.pressed=false;up.position=movement.position;Input.parse_input_event(up)
+	var up:InputEventMouseButton=down.duplicate();up.pressed=false;up.position=movement.position;up.global_position=up.position;Input.parse_input_event(up)
 	await get_tree().create_timer(.1).timeout
 
 func _sample_rebound(button: Button) -> Dictionary:
-	var rect:=button.get_global_rect();var at:=rect.get_center()
+	await RenderingServer.frame_post_draw
+	var rect:=button.get_global_rect();var at:=_input_position(button)
 	var movement:=InputEventMouseMotion.new();movement.position=at;movement.global_position=at;Input.parse_input_event(movement)
 	var event:=InputEventMouseButton.new();event.button_index=MOUSE_BUTTON_LEFT;event.position=at;event.global_position=at;event.pressed=true;Input.parse_input_event(event)
 	await get_tree().create_timer(.12).timeout

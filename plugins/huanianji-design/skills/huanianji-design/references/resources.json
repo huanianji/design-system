@@ -1,5 +1,5 @@
 {
-  "phase": "portable-plugin-candidate",
+  "phase": "portable-plugin-0.1.1-target-environment-verification-required",
   "resources": [
     {
       "id": "common-rules",
@@ -24,6 +24,12 @@
       "path": "references/direction-guide.md",
       "state": "usable-draft",
       "purpose": "方向探索与已有主题延续"
+    },
+    {
+      "id": "visual-baselines",
+      "path": "references/visual-baselines/index.md",
+      "state": "curated-static-examples-live-review-required",
+      "purpose": "雨伞设计的管理与原生专业创作静态参照，说明构图/密度/留白及适用边界；非账号整页模板、非运动验收，不替代用户指定基准"
     },
     {
       "id": "web",
@@ -221,8 +227,8 @@
     {
       "id": "plugin-distribution",
       "path": "references/packaged-status.md",
-      "state": "local-package-verified-target-native-platforms-and-independent-AI-pending",
-      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。插件包、跨平台安装入口、版本保留、17项隔离集成检查及Web/Godot实际运行；不接入Lumina正式产品",
+      "state": "github-public-download-and-host-read-verified-target-platforms-and-independent-AI-pending",
+      "purpose": "源工程历史条目仅保留范围摘要；当前电脑重新验证。huanianji/design-system公开首版及限制性许可；AI安装协议、公开下载、文件完整性、隔离安装与宿主读取有实际证据；Windows/Linux实机和独立AI续作待验，不接入Lumina正式产品",
       "distribution": "historical-summary-only"
     }
   ],
@@ -254,6 +260,6 @@
     "combined_management_creative": "implemented-and-verified-local-overall-user-review-pending",
     "ai_current_asset_consumption": "main-session-entry-to-real-implementation-verified-independent-P5-pending",
     "godot_real_product_case": "Lumina-local-native-preview-user-accepted-no-formal-integration-requested",
-    "plugin_distribution": "0.1.0-self-contained-zip-isolated-install-host-read-relocation-and-native-samples-verified-macos-target-platforms-pending"
+    "plugin_distribution": "0.1.0-github-public-custom-noncommercial-license-anonymous-download-isolated-install-and-host-read-verified-target-platforms-pending"
   }
 }

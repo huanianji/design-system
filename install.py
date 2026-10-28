@@ -58,7 +58,7 @@ def install(home, dry_run=False):
     if catalog_path.is_symlink() or not catalog_path.resolve().is_relative_to(home):
         raise ValueError('个人插件源是链接或越出用户目录，请先核对。')
     catalog = read(catalog_path) if catalog_path.exists() else {
-        'name':'huanianji-personal', 'interface':{'displayName':'华年集本地插件'}, 'plugins':[]}
+        'name':'huanianji-personal', 'interface':{'displayName':'雨伞设计本地插件'}, 'plugins':[]}
     if not isinstance(catalog.get('plugins'),list) or not isinstance(catalog.get('name'),str):
         raise ValueError('现有个人插件源格式不正确，拒绝覆盖。')
     if not all(isinstance(item,dict) for item in catalog['plugins']):
@@ -78,7 +78,7 @@ def install(home, dry_run=False):
               'host_install_required':True,
               'license':manifest['license'],'license_file':str(destination/'LICENSE'),
               'usage':'允许非商业自用；转售、再分发或商用需另行书面授权。',
-              'next':'重启 Codex，在插件目录的个人／本地来源中安装「华年集设计系统」，然后开新会话使用。'}
+              'next':'重启 Codex，在插件目录的个人／本地来源中安装「雨伞设计」，然后开新会话使用。'}
     if dry_run: return result
     if not destination.exists():
         destination.parent.mkdir(parents=True, exist_ok=True)

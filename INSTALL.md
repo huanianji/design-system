@@ -1,6 +1,8 @@
-# AI 安装协议：华年集设计系统
+# AI 安装协议：雨伞设计
 
 本说明用于帮助具备终端／文件／网络能力的 AI 助手，将 `huanianji/design-system` 中的设计系统安装到 **Codex**。仓库地址：`https://github.com/huanianji/design-system`。
+
+当前显示名为「雨伞设计」，旧称「华年集设计系统」。插件及主 Skill 技术标识仍为 `huanianji-design`，沿原来源更新；更名不要求另装第二个插件。
 
 只有在用户要求安装或更新本插件时，才执行会写入插件配置的步骤；用户仅要求阅读或评估时，提供说明即可。安装范围为 Codex 插件与必要的本地来源登记，不包含业务项目改造、其他插件清理或账号配置迁移。
 
@@ -56,7 +58,7 @@ python3 scripts/portable.py doctor
 
 Windows 可用 `py -3 -X utf8 scripts/portable.py doctor`。脚本需要 Python 3.9+；Godot 示例另外需要目标电脑上的 Godot，引擎可通过 `--godot <实际可执行文件路径>` 指定。缺少引擎时，将 Godot 运行状态报告为待准备，不伪装成全部能力已就绪。
 
-若当前会话没有重新加载插件，让用户打开新会话，并从插件选择器调用「华年集设计系统」。存在同名独立 Skill 时，明确使用 `huanianji-design:huanianji-design`；保留旧入口，除非用户另行要求处理。
+若当前会话没有重新加载插件，让用户打开新会话，并从插件选择器调用「雨伞设计」。存在同名独立 Skill 时，明确使用 `huanianji-design:huanianji-design`；保留旧入口，除非用户另行要求处理。
 
 ## 4. 更新
 
